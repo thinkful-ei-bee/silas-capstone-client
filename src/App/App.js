@@ -2,18 +2,30 @@ import React from 'react';
 import { Route } from 'react-router-dom'
 import LandingPage from '../LandingPage/LandingPage'
 import EntryPage from '../EntryPage/EntryPage'
+import Registration from '../Registration/Registration'
 
 
-function App() {
-  return (
-    <div className="App">
+class App extends React.Component {
 
-      <Route exact path='/' component={LandingPage} />
+  constructor(props) {
+    super(props)
+    this.state = {
+      entry: ''
+    }
+  }
+  render() {
+    return (
+      <div className="App">
 
-      <Route path='/entry' component={EntryPage} />
+        <Route exact path='/' component={LandingPage} />
 
-    </div>
-  );
+        <Route path='/entry' render={() => <EntryPage entry={this.state.entry}/>} />
+
+        <Route path='/register' render={() => <Registration />} />
+
+      </div>
+    );
+  }
 }
 
 export default App;
