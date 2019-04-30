@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import LandingPage from '../LandingPage/LandingPage'
 import EntryPage from '../EntryPage/EntryPage'
 import Registration from '../Registration/Registration'
+import ApiServices from '../services/api-services'
 
 
 class App extends React.Component {
@@ -10,7 +11,8 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      entry: ''
+      entry: '',
+      quotes: []
     }
   }
 
@@ -18,6 +20,26 @@ class App extends React.Component {
     this.setState({
       entry
     })
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      if (this.state.entry.length > 0) {
+        const entry = this.state.entry.split(' ')
+        const subject = entry[Math.floor(Math.random() * entry.length)]
+
+        console.log('subject: ', subject)
+
+        ApiServices.getQuotesBySubject(subject)
+          .then(quote => {
+            console.log('quote: ', quote)
+            this.setState({
+              quotes: quote
+            })
+          })
+      }
+
+    }, 8000)
   }
 
   render() {
@@ -29,6 +51,7 @@ class App extends React.Component {
         <Route path='/entry' render={() => 
           <EntryPage 
             entry={this.state.entry} 
+            quotes={this.state.quotes}
             updateEntry={this.updateEntry}
           />} 
         />
