@@ -13,13 +13,25 @@ class App extends React.Component {
       entry: ''
     }
   }
+
+  updateEntry = (entry) => {
+    this.setState({
+      entry
+    })
+  }
+
   render() {
     return (
       <div className="App">
 
         <Route exact path='/' component={LandingPage} />
 
-        <Route path='/entry' render={() => <EntryPage entry={this.state.entry}/>} />
+        <Route path='/entry' render={() => 
+          <EntryPage 
+            entry={this.state.entry} 
+            updateEntry={this.updateEntry}
+          />} 
+        />
 
         <Route path='/register' render={() => <Registration />} />
 
