@@ -15,4 +15,18 @@ export default {
         : res.json()
     })
   },
+
+  getQuoteBySubject(subject) {
+    return fetch(`http://quotes.rest/quote/search.json?category=${subject}`, {
+      method: 'GET',
+      headers: {
+        'X-TheySaidSo-Api-Secret': config.API_SECRET
+      },
+    })
+    .then(res => {
+      return (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
+  },
 }
