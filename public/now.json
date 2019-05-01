@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "alias": "Loxphordex-quoter-client",
+  "name": "quoter-client",
+  "routes": [
+      {
+        "src": "^/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": ".*",
+        "dest": "/index.html"
+      }
+  ]
+}

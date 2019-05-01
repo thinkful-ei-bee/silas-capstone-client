@@ -17,7 +17,7 @@ export default {
   },
 
   getQuoteBySubject(subject) {
-    return fetch(`http://quotes.rest/quote/search.json?category=${subject}`, {
+    return fetch(`https://quotes.rest/quote/search.json?category=${subject}`, {
       method: 'GET',
       headers: {
         'X-TheySaidSo-Api-Secret': config.API_SECRET
