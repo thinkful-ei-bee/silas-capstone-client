@@ -8,7 +8,13 @@ export default class Registration extends React.Component {
     return (
       <div className='registration'>
 
-        <form id='register-form' onSubmit={(event) => ApiServices.postUser(event.target.value)}>
+        <h2>Register for an Account</h2>
+
+        <form id='register-form' onSubmit={(event) => {
+          event.preventDefault()
+          console.log(event.target.username.value)
+          ApiServices.postUser(event.target.username.value, event.target.password.value)
+        }}>
 
           <label htmlFor='username'>Username</label>
           <input type='text' id='username' name='username'></input>

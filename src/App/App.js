@@ -4,6 +4,7 @@ import LandingPage from '../LandingPage/LandingPage'
 import EntryPage from '../EntryPage/EntryPage'
 import Registration from '../Registration/Registration'
 import ApiServices from '../services/api-services'
+import Login from '../Login/Login';
 
 
 class App extends React.Component {
@@ -57,6 +58,8 @@ class App extends React.Component {
         />
 
         <Route path='/register' render={() => <Registration />} />
+        
+        <Route path='/login' render={() => <Login />} />
 
       </div>
     );
