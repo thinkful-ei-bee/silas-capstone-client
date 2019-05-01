@@ -11,7 +11,18 @@ export default class EntryPage extends React.Component {
           </form>  
         </section>
 
-        <section id='quotes-area'></section>
+        <section id='quotes-area'>
+          <div className='current-quote'>
+            <p className='quote-paragraph'>{
+              this.props.quotes.length > 0 &&
+              this.props.quotes[this.props.quotes.length - 1].quote
+            }</p>
+            <div className='quote-author'>{
+              this.props.quotes.length > 0 &&
+              '- ' + this.props.quotes[this.props.quotes.length - 1].author
+            }</div>
+          </div>
+        </section>
       </div>
     )
   }

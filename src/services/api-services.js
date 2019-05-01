@@ -16,7 +16,7 @@ export default {
     })
   },
 
-  getQuotesBySubject(subject) {
+  getQuoteBySubject(subject) {
     return fetch(`http://quotes.rest/quote/search.json?category=${subject}`, {
       method: 'GET',
       headers: {

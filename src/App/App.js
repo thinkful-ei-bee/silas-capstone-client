@@ -28,13 +28,14 @@ class App extends React.Component {
         const entry = this.state.entry.split(' ')
         const subject = entry[Math.floor(Math.random() * entry.length)]
 
-        console.log('subject: ', subject)
-
-        ApiServices.getQuotesBySubject(subject)
+        ApiServices.getQuoteBySubject(subject)
           .then(quote => {
-            console.log('quote: ', quote)
+
+            let accum = this.state.quotes
+            accum.push(quote.contents)
+
             this.setState({
-              quotes: quote
+              quotes: accum
             })
           })
       }
@@ -50,7 +51,6 @@ class App extends React.Component {
 
         <Route path='/entry' render={() => 
           <EntryPage 
-            entry={this.state.entry} 
             quotes={this.state.quotes}
             updateEntry={this.updateEntry}
           />} 
