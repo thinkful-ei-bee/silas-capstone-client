@@ -1,13 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ApiServices from '../services/api-services'
+import ApiServices from '../services/api-service'
 
 export default class Registration extends React.Component {
 
   render() {
     return (
       <div className='registration'>
-
         <h2>Register for an Account</h2>
 
         <form id='register-form' onSubmit={(event) => {
@@ -23,11 +22,9 @@ export default class Registration extends React.Component {
           <input type='text' id='password' name='password'></input>
 
           <button type='submit'>Submit</button>
-
         </form>
 
         <Link to='/login'>Already have an account?</Link>
-
       </div>
     )
   }
