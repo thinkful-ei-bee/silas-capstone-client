@@ -19,7 +19,7 @@ export default class Login extends React.Component {
     })
     .then(res => {
       this.props.clearError()
-      window.location.reload();
+      window.location.reload()
     })
     .catch(res => {
       this.props.handleError(res)

@@ -1,19 +1,33 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ApiServices from '../services/api-service'
+import history from '../history'
 
 export default class Registration extends React.Component {
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    const { username, password } = event.target
+
+    ApiServices.postUser(username.value, password.value)
+      .then(user => {
+        username.value=''
+        password.value=''
+        history.push('/entry')
+      })
+      .then(user => {
+        this.props.clearError()
+        window.location.reload()
+      })
+      .catch(this.props.handleError())
+  }
 
   render() {
     return (
       <div className='registration'>
         <h2>Register for an Account</h2>
 
-        <form id='register-form' onSubmit={(event) => {
-          event.preventDefault()
-          console.log(event.target.username.value)
-          ApiServices.postUser(event.target.username.value, event.target.password.value)
-        }}>
+        <form id='register-form' onSubmit={(event) => this.handleSubmit(event)}>
 
           <label htmlFor='username'>Username</label>
           <input type='text' id='username' name='username'></input>

@@ -69,7 +69,10 @@ class App extends React.Component {
           />} 
         />
 
-        <Route path='/register' history={history} render={() => <Registration />} />
+        <Route path='/register' history={history} render={() => <Registration 
+          handleError={this.handleError}
+          clearError={this.clearError}          
+        />} />
         
         <Route path='/login' history={history} render={() => <Login 
           handleError={this.handleError}
