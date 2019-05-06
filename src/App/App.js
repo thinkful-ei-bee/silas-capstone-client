@@ -16,7 +16,6 @@ class App extends React.Component {
     super(props)
     this.state = {
       entry: '',
-      currentPath: '/',
       quotes: [],
       error: null,
     }
@@ -26,10 +25,6 @@ class App extends React.Component {
     this.setState({
       entry
     })
-  }
-
-  updateCurrentPath = (path) => {
-    this.setState({ currentPath: path })
   }
 
   handleError = (response) => {
@@ -72,23 +67,26 @@ class App extends React.Component {
 
         <Route exact path='/' history={history} component={LandingPage} />
 
-        <Route path='/entry' history={history} render={() => 
+        <Route path='/entry' history={history} render={(history) => 
           <EntryPage 
+            handleError={this.handleError}
+            clearError={this.clearError}      
             quotes={this.state.quotes}
             updateEntry={this.updateEntry}
+            history={history}
           />} 
         />
 
-        <Route path='/register' history={history} render={() => <Registration 
+        <Route path='/register' render={(history) => <Registration 
           handleError={this.handleError}
-          clearError={this.clearError}          
+          clearError={this.clearError}   
+          history={history}       
         />} />
         
         <Route path='/login' render={({history}) => <Login 
           handleError={this.handleError}
           clearError={this.clearError}
           stateError={this.state.error}
-          updatePath={this.updateCurrentPath}
           history={history}
         />} />
 

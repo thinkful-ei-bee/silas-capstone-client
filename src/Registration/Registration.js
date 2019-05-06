@@ -17,7 +17,7 @@ export default class Registration extends React.Component {
       })
       .then(user => {
         this.props.clearError()
-        window.location.reload()
+        this.props.history.history.push('/entry')
       })
       .catch(err => this.props.handleError(err))
   }

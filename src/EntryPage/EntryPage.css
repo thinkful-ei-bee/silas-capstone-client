@@ -9,6 +9,16 @@ textarea {
   height: 288px;
 }
 
+#save-button {
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+
+#logout {
+  color: white;
+}
+
 .quotebox {
   text-align: left;
 }
