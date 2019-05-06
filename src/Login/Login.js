@@ -15,16 +15,21 @@ export default class Login extends React.Component {
     .then(res => {
       loginUsername.value = ''
       loginPassword.value = ''
-      history.push('/entry')
+      this.props.history.push('/entry')
     })
     .then(res => {
       this.props.clearError()
-      window.location.reload()
+      //window.location.reload()
+      console.log(history.location.pathname)
     })
     .catch(res => {
       this.props.handleError(res)
     })
   }
+
+  // componentDidUpdate() {
+  //   this.props.updatePath(history.location.pathname)
+  // }
 
   render() {
     const error = this.props.stateError
@@ -43,7 +48,7 @@ export default class Login extends React.Component {
           <input type='text' id='loginUsername' name='loginUsername'></input>
 
           <label htmlFor='loginPassword'>Password</label>
-          <input type='text' id='loginPassword' name='loginPassword'></input>
+          <input type='password' id='loginPassword' name='loginPassword'></input>
 
           <button type='submit'>Submit</button>
           

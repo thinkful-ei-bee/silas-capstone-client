@@ -19,7 +19,7 @@ export default class Registration extends React.Component {
         this.props.clearError()
         window.location.reload()
       })
-      .catch(this.props.handleError())
+      .catch(err => this.props.handleError(err))
   }
 
   render() {

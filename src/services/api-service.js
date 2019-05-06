@@ -46,6 +46,10 @@ const ApiService = {
     })
   },
 
+  postEntry(entry) {
+
+  },
+
   postRefreshToken() {
     return fetch(`${config.API_ENDPOINT}/auth/refresh`, {
       method: 'POST',

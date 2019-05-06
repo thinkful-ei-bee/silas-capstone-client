@@ -13,12 +13,6 @@ textarea {
   text-align: left;
 }
 
-.main-wrap label {
-  border-radius: 50%;
-  font-size: 24px;
-  padding-bottom: 3px;
-}
-
 .sidebar {
     background-color: black;
     width: 150px;
@@ -54,13 +48,16 @@ input:checked ~ .portfolio {
 }
 
 input:checked ~ label {
-    left: 0;
+    left: 10px;
 }
 
-label {
+.main-wrap label {
+    border-radius: 50%;
+    font-size: 24px;
+    padding-bottom: 3px;
     z-index: 2;
     position: absolute;
-    top: 0;
+    top: 10px;
     left: 150px;
     background-color: rgb(190, 190, 190);
     color: rgb(32, 32, 32);

@@ -16,6 +16,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       entry: '',
+      currentPath: '/',
       quotes: [],
       error: null,
     }
@@ -25,6 +26,10 @@ class App extends React.Component {
     this.setState({
       entry
     })
+  }
+
+  updateCurrentPath = (path) => {
+    this.setState({ currentPath: path })
   }
 
   handleError = (response) => {
@@ -43,6 +48,11 @@ class App extends React.Component {
 
         ApiServices.getQuoteBySubject(subject)
           .then(quote => {
+
+            if (!quote) {
+              console.log(`No match for ${quote}`)
+              return
+            }
 
             let accum = this.state.quotes
             accum.push(quote.contents)
@@ -74,11 +84,12 @@ class App extends React.Component {
           clearError={this.clearError}          
         />} />
         
-        <Route path='/login' history={history} render={() => <Login 
+        <Route path='/login' render={({history}) => <Login 
           handleError={this.handleError}
           clearError={this.clearError}
           stateError={this.state.error}
-          appHistory={this.props.history}
+          updatePath={this.updateCurrentPath}
+          history={history}
         />} />
 
       </div>
