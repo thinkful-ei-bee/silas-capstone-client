@@ -1,11 +1,11 @@
 import config from '../config'
+import TokenService from './token-service'
+import IdleService from './idle-service'
 
-export default {
+const ApiService = {
   postUser(username, password) {
 
     const user = { username, password }
-
-    console.log(user)
 
     return fetch(`${config.API_ENDPOINT}/api/users`, {
       method: 'POST',
@@ -34,6 +34,43 @@ export default {
         ? res.json().then(e => Promise.reject(e))
         : res.json()
     })
+    .then(res => {
+      TokenService.saveAuthToken(res.authToken)
+      IdleService.registerIdleTimerResets()
+      TokenService.queueCallbackBeforeExpiry(() => {
+        ApiService.postRefreshToken()
+      })
+      return res
+    })
+  },
+
+  postEntry(entry) {
+
+  },
+
+  postRefreshToken() {
+    return fetch(`${config.API_ENDPOINT}/auth/refresh`, {
+      method: 'POST',
+      headers: {
+        'authorization': `Bearer ${TokenService.getAuthToken()}`
+      },
+    })
+    .then(res => {
+      return (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
+    .then(res => {
+      TokenService.saveAuthToken(res.authToken)
+      TokenService.queueCallbackBeforeExpiry(() => {
+        ApiService.postRefreshToken()
+      })
+      return res
+    })
+    .catch(err => {
+      console.log('refresh token request error')
+      console.error(err)
+    })
   },
 
   getQuoteBySubject(subject) {
@@ -50,3 +87,5 @@ export default {
     })
   },
 }
+
+export default ApiService

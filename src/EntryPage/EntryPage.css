@@ -1,0 +1,78 @@
+textarea {
+  resize: none;
+  min-width: 80%;
+  height: 150px;
+  border: 4px solid lightgray;
+}
+
+#quotes-area {
+  height: 288px;
+}
+
+#save-button {
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+
+#logout {
+  color: white;
+}
+
+.quotebox {
+  text-align: left;
+}
+
+.sidebar {
+    background-color: black;
+    width: 150px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.sidebar h1 {
+    color: white;
+}
+
+.portfolio {
+    background-color: rgb(32, 32, 32);
+    padding: 5%;
+    position: absolute;
+    top: 0;
+    left: 150px;
+    right: 0;
+    bottom: 0;
+    
+    -moz-transition: left 0.5s ease;
+    transition: left 0.5s ease;
+}
+
+input[type=checkbox] {
+   display: none;
+}
+
+input:checked ~ .portfolio { 
+    left: 0;
+}
+
+input:checked ~ label {
+    left: 10px;
+}
+
+.main-wrap label {
+    border-radius: 50%;
+    font-size: 24px;
+    padding-bottom: 3px;
+    z-index: 2;
+    position: absolute;
+    top: 10px;
+    left: 150px;
+    background-color: rgb(190, 190, 190);
+    color: rgb(32, 32, 32);
+    width: 36px;
+    
+    -moz-transition: left 0.5s ease;
+    transition: left 0.5s ease;
+}

@@ -1,0 +1,15 @@
+.landing-page-info {
+  background-color: rgb(190, 190, 190);
+  color: rgb(32, 32, 32);
+  text-align: left;
+  height: 200px;
+  width: 100%;
+  font-size: 16px;
+  padding-top: 10em;
+  margin-top: 12px;
+}
+
+#start-writing {
+  font-family: 'Satisfy', cursive;
+  font-size: 28px;
+}

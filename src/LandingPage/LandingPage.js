@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './LandingPage.css'
 
 export default class LandingPage extends React.Component {
   render() {
@@ -19,7 +20,7 @@ export default class LandingPage extends React.Component {
           Watch quotes appear before your eyes as you write about anything.
         </p>
 
-        <Link to='/entry'>Start Writing</Link>
+        <div id='start-writing'><Link to='/entry'>Start Writing</Link></div>
 
       </div>
     )
