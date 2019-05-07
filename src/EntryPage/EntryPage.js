@@ -1,6 +1,8 @@
 import React from 'react'
 import './EntryPage.css'
 import TokenService from '../services/token-service'
+import ApiService from '../services/api-service'
+import UserEntryList from '../UserEntryList/UserEntryList'
 
 export default class EntryPage extends React.Component {
 
@@ -8,6 +10,34 @@ export default class EntryPage extends React.Component {
     TokenService.clearAuthToken()
     this.props.clearError()
     this.props.history.history.push('/')
+  }
+
+  handleSaveEntry = (event) => {
+    event.preventDefault()
+    const content = event.target.entryText.value
+    const title = event.target.title.value
+
+    const entry = { title, content }
+
+    // Send the entry to the server
+    ApiService.postEntry(entry)
+      .then(() => {
+        ApiService.getUserEntries()
+        .then(entries => {
+          this.props.updateUserEntries(entries)
+        })
+        .catch(err => this.props.handleError(err))        
+      })
+      .catch(err => this.props.handleError(err))
+  }
+
+  handleGetEntry = (entryId) => {
+    console.log(entryId)
+    ApiService.getEntryById(entryId)
+      .then(entry => {
+        this.props.updateEntry(entry.content)
+        this.props.updateTitle(entry.title)
+      })
   }
 
   render() {
@@ -19,6 +49,13 @@ export default class EntryPage extends React.Component {
                 <label htmlFor="slide-sidebar"><span>&#9776;</span></label>
             <div className="sidebar">
               <h2>My Journals</h2>
+              <UserEntryList 
+                userEntries={this.props.userEntries}
+                updateUserEntries={this.props.updateUserEntries}
+                updateEntry={this.props.updateEntry}
+                updateTitle={this.props.updateTitle}
+                handleGetEntry={this.handleGetEntry}
+              />
               <button id='logout' onClick={() => this.handleLogout()}>Logout</button>
             </div>
 
@@ -41,8 +78,14 @@ export default class EntryPage extends React.Component {
               </section>
 
               <section id='entry-area'>
-                <form id='entry-form'>
-                  <textarea onChange={(event) => this.props.updateEntry(event.target.value)}></textarea>
+                <form id='entry_form' onSubmit={(event) => this.handleSaveEntry(event)}>
+                  <input id='title' name='title' defaultValue={this.props.currentTitle}></input>
+                  <textarea 
+                    id='entryText' 
+                    name='entryText' 
+                    value={this.props.currentEntry}
+                    onChange={(event) => this.props.updateEntry(event.target.value)}>
+                  </textarea>
                   <button type='submit' id='save-button'>Save</button>
                 </form>  
               </section>            

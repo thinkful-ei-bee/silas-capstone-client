@@ -45,7 +45,19 @@ const ApiService = {
   },
 
   postEntry(entry) {
-
+    return fetch(`${config.API_ENDPOINT}/auth/entry`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/JSON',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({entry})
+    })
+    .then(res => {
+      return (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
   },
 
   postRefreshToken() {
@@ -70,6 +82,32 @@ const ApiService = {
     .catch(err => {
       console.log('refresh token request error')
       console.error(err)
+    })
+  },
+
+  getUserEntries() {
+    return fetch(`${config.API_ENDPOINT}/auth/entry/list/`, {
+      method: 'GET',
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+    }).then(res => {
+      return (!res.ok)
+        ? res.json(e => Promise.reject(e))
+        : res.json()
+    })
+  },
+
+  getEntryById(id) {
+    return fetch(`${config.API_ENDPOINT}/auth/entry/${id}`, {
+      method: 'GET',
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res => {
+      return (!res.ok)
+        ? res.json(e => Promise.reject(e))
+        : res.json()
     })
   },
 
