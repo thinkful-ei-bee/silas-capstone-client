@@ -17,8 +17,16 @@ export default class LandingPage extends React.Component {
           <p>Write about anything. See what the greatest minds have to say about it.</p>
         </div>
 
-        <div id='start-writing'><Link to='/entry'>Start Writing</Link></div>
-        <div id='register'><Link to='/register'>Sign Up</Link></div>
+        <div className='sub-info'>
+          <h3>Inspiration from writing</h3>
+          <p>Quoter scans what you write and finds quotes to match.</p>
+
+          <h3>A treatment for writer's block</h3>
+          <p>Discover new authors as well as new perspecives.</p>
+        </div>
+
+        <div className='landing-button' id='start-writing'><Link to='/entry'>Start Writing</Link></div>
+        <div className='landing-button' id='register'><Link to='/register'>Sign Up</Link></div>
 
       </div>
     )

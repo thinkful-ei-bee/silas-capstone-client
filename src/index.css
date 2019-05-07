@@ -39,6 +39,8 @@ h1 {
 
 a, u {
     text-decoration: none;
-    color: rgb(190, 190, 190);
+    color: rgb(109, 109, 109);
     margin: 5px;
+    display: block;
+    padding: 2px;
 }
