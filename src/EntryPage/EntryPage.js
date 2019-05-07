@@ -14,12 +14,20 @@ export default class EntryPage extends React.Component {
 
   handleSaveEntry = (event) => {
     event.preventDefault()
-    const entry = event.target.entryText.value
+    const content = event.target.entryText.value
+    const title = event.target.title.value
 
-    console.log(entry)
+    const entry = { title, content }
 
     // Send the entry to the server
     ApiService.postEntry(entry)
+      .then(() => {
+        ApiService.getUserEntries()
+        .then(entries => {
+          this.props.updateUserEntries(entries)
+        })
+        .catch(err => this.props.handleError(err))        
+      })
       .catch(err => this.props.handleError(err))
   }
 
@@ -59,6 +67,7 @@ export default class EntryPage extends React.Component {
 
               <section id='entry-area'>
                 <form id='entry_form' onSubmit={(event) => this.handleSaveEntry(event)}>
+                  <input id='title' name='title'></input>
                   <textarea id='entryText' name='entryText' onChange={(event) => this.props.updateEntry(event.target.value)}></textarea>
                   <button type='submit' id='save-button'>Save</button>
                 </form>  

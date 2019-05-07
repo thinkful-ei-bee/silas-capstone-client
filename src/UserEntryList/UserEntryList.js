@@ -1,5 +1,6 @@
 import React from 'react'
 import ApiService from '../services/api-service'
+import './UserEntryList.css'
 
 export default class UserEntryList extends React.Component {
 
@@ -16,7 +17,7 @@ export default class UserEntryList extends React.Component {
         {this.props.userEntries.map(entry => {
           return (
             <li key={entry.id}>
-              <h3>{`Entry ${entry.id}`}</h3>
+              <h3>{entry.title}</h3>
             </li>
           )
         })}
