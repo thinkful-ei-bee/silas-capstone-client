@@ -16,6 +16,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       entry: '',
+      userEntries: [],
       quotes: [],
       error: null,
     }
@@ -25,6 +26,10 @@ class App extends React.Component {
     this.setState({
       entry
     })
+  }
+
+  updateUserEntries = (userEntries) => {
+    this.setState({ userEntries })
   }
 
   handleError = (response) => {
@@ -73,6 +78,8 @@ class App extends React.Component {
             clearError={this.clearError}      
             quotes={this.state.quotes}
             updateEntry={this.updateEntry}
+            updateUserEntries={this.updateUserEntries}
+            userEntries={this.state.userEntries}
             history={history}
           />} 
         />
