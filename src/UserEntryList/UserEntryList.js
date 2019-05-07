@@ -16,8 +16,8 @@ export default class UserEntryList extends React.Component {
       <ul id='user-entry-list'>
         {this.props.userEntries.map(entry => {
           return (
-            <li key={entry.id}>
-              <h3>{entry.title}</h3>
+            <li key={entry.id} onClick={(event) => this.props.handleGetEntry(event.target.id)}>
+              <h3 id={entry.id}>{entry.title}</h3>
             </li>
           )
         })}

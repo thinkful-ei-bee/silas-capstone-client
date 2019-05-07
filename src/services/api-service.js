@@ -98,6 +98,19 @@ const ApiService = {
     })
   },
 
+  getEntryById(id) {
+    return fetch(`${config.API_ENDPOINT}/auth/entry/${id}`, {
+      method: 'GET',
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res => {
+      return (!res.ok)
+        ? res.json(e => Promise.reject(e))
+        : res.json()
+    })
+  },
+
   getQuoteBySubject(subject) {
     return fetch(`https://quotes.rest/quote/search.json?category=${subject}`, {
       method: 'GET',

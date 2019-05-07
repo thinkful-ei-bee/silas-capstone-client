@@ -16,6 +16,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       entry: '',
+      title: '',
       userEntries: [],
       quotes: [],
       error: null,
@@ -26,6 +27,10 @@ class App extends React.Component {
     this.setState({
       entry
     })
+  }
+
+  updateTitle = (title) => {
+    this.setState({ title })
   }
 
   updateUserEntries = (userEntries) => {
@@ -74,10 +79,13 @@ class App extends React.Component {
 
         <Route path='/entry' history={history} render={(history) => 
           <EntryPage 
+            currentEntry={this.state.entry}
+            currentTitle={this.state.title}
             handleError={this.handleError}
             clearError={this.clearError}      
             quotes={this.state.quotes}
             updateEntry={this.updateEntry}
+            updateTitle={this.updateTitle}
             updateUserEntries={this.updateUserEntries}
             userEntries={this.state.userEntries}
             history={history}

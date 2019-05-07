@@ -31,6 +31,15 @@ export default class EntryPage extends React.Component {
       .catch(err => this.props.handleError(err))
   }
 
+  handleGetEntry = (entryId) => {
+    console.log(entryId)
+    ApiService.getEntryById(entryId)
+      .then(entry => {
+        this.props.updateEntry(entry.content)
+        this.props.updateTitle(entry.title)
+      })
+  }
+
   render() {
     return (
       <div className='entry-page'>
@@ -43,6 +52,9 @@ export default class EntryPage extends React.Component {
               <UserEntryList 
                 userEntries={this.props.userEntries}
                 updateUserEntries={this.props.updateUserEntries}
+                updateEntry={this.props.updateEntry}
+                updateTitle={this.props.updateTitle}
+                handleGetEntry={this.handleGetEntry}
               />
               <button id='logout' onClick={() => this.handleLogout()}>Logout</button>
             </div>
@@ -67,8 +79,13 @@ export default class EntryPage extends React.Component {
 
               <section id='entry-area'>
                 <form id='entry_form' onSubmit={(event) => this.handleSaveEntry(event)}>
-                  <input id='title' name='title'></input>
-                  <textarea id='entryText' name='entryText' onChange={(event) => this.props.updateEntry(event.target.value)}></textarea>
+                  <input id='title' name='title' defaultValue={this.props.currentTitle}></input>
+                  <textarea 
+                    id='entryText' 
+                    name='entryText' 
+                    value={this.props.currentEntry}
+                    onChange={(event) => this.props.updateEntry(event.target.value)}>
+                  </textarea>
                   <button type='submit' id='save-button'>Save</button>
                 </form>  
               </section>            
