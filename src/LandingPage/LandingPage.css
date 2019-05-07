@@ -1,15 +1,36 @@
 .landing-page-info {
-  background-color: rgb(190, 190, 190);
-  color: rgb(32, 32, 32);
-  text-align: left;
-  height: 200px;
-  width: 100%;
-  font-size: 16px;
-  padding-top: 10em;
-  margin-top: 12px;
+  background-color: rgb(32, 43, 92);
+  color: rgb(218, 218, 218);
+  border-radius: 7%;
+  text-align: center;
+  height: 190px;
+  width: 92%;
+  max-width: 300px;
+  font-size: 14px;
+  padding-top: 4em;
+  margin: auto;
+  margin-top: 45px;
+}
+
+.landing-page-info p {
+  margin: 0 17%;
+}
+
+#landing-nav {
+  text-align: right;
+  background-color: white;
+}
+
+#landing-header {
+  font-size: 30px;
+  color: white;
 }
 
 #start-writing {
   font-family: 'Satisfy', cursive;
   font-size: 28px;
+  background-color: rgb(135, 236, 77);
+  margin: auto;
+  width: 92%;
+  border-radius: 21px;
 }

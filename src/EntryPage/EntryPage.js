@@ -3,6 +3,7 @@ import './EntryPage.css'
 import TokenService from '../services/token-service'
 import ApiService from '../services/api-service'
 import UserEntryList from '../UserEntryList/UserEntryList'
+import Nav from '../Nav/Nav'
 
 export default class EntryPage extends React.Component {
 
@@ -60,9 +61,9 @@ export default class EntryPage extends React.Component {
             </div>
 
             <div className="portfolio">
-              <header role='heading'>
-                <h1>Quoter</h1>
-              </header>
+              <nav>
+                <Nav />
+              </nav>
 
               <section id='quotes-area'>
                 <div className='quotebox'>
