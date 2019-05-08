@@ -87,6 +87,7 @@ export default class EntryPage extends React.Component {
                     defaultValue={this.props.currentTitle}
                     placeholder='Title'></input>
                   <textarea 
+                    placeholder='Type anything...'
                     id='entryText' 
                     name='entryText' 
                     value={this.props.currentEntry}

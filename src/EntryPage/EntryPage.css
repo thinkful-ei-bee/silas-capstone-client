@@ -4,6 +4,7 @@ textarea {
   min-width: 80%;
   height: 150px;
   border: 4px solid lightgray;
+  padding: 10px;
 }
 
 #quotes-area {
@@ -19,7 +20,8 @@ textarea {
   margin: auto;
   width: 90%;
   border-radius: 7px;
-  padding-bottom: 30%;
+  padding-bottom: 62px;
+  max-height: 248px;
 }
 
 #big-Q {
@@ -57,7 +59,7 @@ textarea {
 }
 
 .sidebar {
-    background-color: black;
+    background-color: rgb(209, 84, 53);
     min-width: 300px;
     max-width: 330px;
     position: absolute;
@@ -69,8 +71,38 @@ textarea {
     transition: opacity .3s;
 }
 
-.sidebar h1 {
+.sidebar h2 {
+    padding: 60px;
+    padding-bottom: 40px;
+    background-color: rgb(32, 32, 32);
     color: white;
+    margin: 0;
+    position: relative;
+    top: 0px;
+}
+
+.sidebar ul {
+  position: relative;
+  top: 20px;
+  max-height: 540px;
+}
+
+.sidebar li {
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  border-radius: 3px;
+}
+
+.sidebar li h3 {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+#logout {
+  position: relative;
+  top: 300px;
+  font-size: 20px;
 }
 
 .portfolio {
