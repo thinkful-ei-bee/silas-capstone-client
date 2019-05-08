@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Nav from '../Nav/Nav'
 import './LandingPage.css'
+import './LandingPageFullScreen.css'
 
 export default class LandingPage extends React.Component {
   render() {
@@ -17,8 +17,17 @@ export default class LandingPage extends React.Component {
           <p>Write about anything. See what the greatest minds have to say about it.</p>
         </div>
 
+        <div className='landing-full-info'>
+          <div id='landing-full-head-block' className='full-block'>
+            <h1 id='full-header'>Quoter</h1>
+          </div>
+          <div id='landing-full-info-block' className='full-block'>
+            <p>Write about anything. See what the greatest minds have to say about it.</p>
+          </div>
+        </div>
+
         <div className='sub-info'>
-          <h3>Inspiration from writing</h3>
+          <h3>Inspiration for writing, from writing</h3>
           <p>Quoter scans what you write and finds quotes to match.</p>
 
           <h3>A treatment for writer's block</h3>

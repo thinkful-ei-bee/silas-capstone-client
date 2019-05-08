@@ -1,0 +1,73 @@
+@media only screen and (min-width: 600px) {
+  #landing-login {
+    font-size: 17px;
+  } 
+  .landing-page {
+    min-width: 700px;
+  }
+  .landing-page h1 {
+    position: relative;
+    left: 6px;
+    top: 44px;
+  }
+  .landing-page-info {
+    display: none;
+  }
+  .landing-full-info {
+    display: inline-block;
+    min-width: 700px;
+  }
+  .landing-full-info h1 {
+    color: white;
+  }
+  #landing-full-head-block {
+    display: inline-block;
+    background-color: rgb(1, 97, 87, 38);
+    color: rgb(218, 218, 218);
+    border-radius: 7%;
+    text-align: center;
+    height: 190px;
+    width: 42%;
+    max-width: 300px;
+    font-size: 18px;
+    padding-top: 4em;
+    margin: auto 5px;
+    margin-top: 30px;
+  }
+  #landing-full-info-block {
+    position: relative;
+    top: -47px;
+    display: inline-block;
+    background-color: rgb(231, 215, 187, 98);
+    color: rgb(46, 46, 46);
+    border-radius: 7%;
+    text-align: left;
+    height: 161px;
+    width: 36%;
+    max-width: 300px;
+    font-size: 18px;
+    padding-top: 4em;
+    margin: auto 5px;
+    margin-top: 30px;    
+  }
+  #landing-full-info-block p {
+    max-width: 80%;
+    margin: auto;
+  }
+  .sub-info {
+    margin: 40px auto 10px auto
+  }
+  .sub-info h3 {
+    font-size: 15px;
+  }
+  .sub-info p {
+    font-size: 14px;
+    margin-bottom: 13px;
+  }
+  #start-writing {
+    width: 48%;
+  }
+  #register {
+    width: 40%;
+  }
+}

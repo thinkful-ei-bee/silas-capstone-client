@@ -29,7 +29,7 @@ nav {
 }
 
 h1 {
-  font-family: 'Gravitas One', cursive;
+  font-family: 'Poiret One', cursive;
   color: rgb(190, 190, 190);
   font-size: 1.6em;
   margin: 0 auto;
@@ -45,6 +45,20 @@ a, u {
     padding: 2px;
 }
 
+ul {
+  padding: 0;
+}
+
 .error {
   color: red;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+  body {
+    margin: 0 20%;
+  }
 }

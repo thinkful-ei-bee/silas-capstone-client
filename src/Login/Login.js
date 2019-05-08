@@ -39,7 +39,7 @@ export default class Login extends React.Component {
       <div id='login-page'>
 
         <nav role='navigation'>
-          <h1 onClick={() => this.props.history.history.push('/')}>Quoter</h1>
+          <h1 className='pointer' onClick={() => this.props.history.push('/')}>Quoter</h1>
         </nav>
 
         <h2>Login to Quoter</h2>      
