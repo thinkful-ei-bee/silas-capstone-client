@@ -1,26 +1,26 @@
-.registration label, input{
+#login-page label, input {
   display: block;
   margin: auto;
   text-align: center;
 }
 
-.registration input {
+#login-page input {
   border: 1px solid gray;
   border-radius: 4px;
   margin: 5px auto;
 }
 
-.registration .error {
- margin-bottom: 10px;
- min-height: 22px;
+#login-page .error {
+  margin-bottom: 10px;
+  min-height: 22px;
 }
 
-.registration h2 {
+#login-page h2 {
   margin: 20px auto 12px auto;
 }
 
-#register-form {
-  background-color: rgb(106, 235, 202);
+#login-form {
+  background-color: rgb(224, 123, 119);
   width: 80%;
   margin: auto;
   padding: 10px 0;
@@ -28,7 +28,7 @@
   border-radius: 15px;
 }
 
-#register-form button {
+#login-form button {
   background-color: white;
   border-radius: 21px;
   border: none;
@@ -37,6 +37,6 @@
   padding: 4px 12px;
 }
 
-#reg-to-login {
+#login-to-reg {
   margin: 18px auto;
 }

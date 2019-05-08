@@ -24,6 +24,8 @@
 
 .landing-page-info p {
   margin: 0 17%;
+  position: relative;
+  top: 12px;
 }
 
 #landing-nav {

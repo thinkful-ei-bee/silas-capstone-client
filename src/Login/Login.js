@@ -2,6 +2,7 @@ import React from 'react'
 import ApiServices from '../services/api-service'
 import history from '../history'
 import { Link } from 'react-router-dom'
+import './Login.css'
 
 export default class Login extends React.Component {
 
@@ -37,13 +38,17 @@ export default class Login extends React.Component {
     return(
       <div id='login-page'>
 
+        <nav role='navigation'>
+          <h1 onClick={() => this.props.history.history.push('/')}>Quoter</h1>
+        </nav>
+
         <h2>Login to Quoter</h2>      
 
+        <div role='alert' className='error'>
+          {error && <p className='red'>{error}</p>}
+        </div>
         <form id='login-form' onSubmit={event => this.handleSubmitJwtAuth(event)}>
           
-          <div role='alert'>
-            {error && <p className='red error'>{error}</p>}
-          </div>
 
           <label htmlFor='loginUsername'>Username</label>
           <input type='text' id='loginUsername' name='loginUsername'></input>
@@ -52,11 +57,9 @@ export default class Login extends React.Component {
           <input type='password' id='loginPassword' name='loginPassword'></input>
 
           <button type='submit'>Submit</button>
-
-          <div id='login-to-reg'><Link to='/register'>Don't have an account?</Link></div>
-          
         </form>
 
+        <div id='login-to-reg'><Link to='/register'>Don't have an account?</Link></div>
       </div>
 
     )

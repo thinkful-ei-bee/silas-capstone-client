@@ -48,7 +48,7 @@ export default class Registration extends React.Component {
           <button className='pure-button' type='submit'>Submit</button>
         </form>
 
-        <Link to='/login'>Already have an account?</Link>
+        <div id='reg-to-login'><Link to='/login'>Already have an account?</Link></div>
       </div>
     )
   }
