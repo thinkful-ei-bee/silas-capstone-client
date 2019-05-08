@@ -1,6 +1,7 @@
 import React from 'react'
 import ApiServices from '../services/api-service'
 import history from '../history'
+import { Link } from 'react-router-dom'
 
 export default class Login extends React.Component {
 
@@ -41,7 +42,7 @@ export default class Login extends React.Component {
         <form id='login-form' onSubmit={event => this.handleSubmitJwtAuth(event)}>
           
           <div role='alert'>
-            {error && <p className='red'>{error}</p>}
+            {error && <p className='red error'>{error}</p>}
           </div>
 
           <label htmlFor='loginUsername'>Username</label>
@@ -51,6 +52,8 @@ export default class Login extends React.Component {
           <input type='password' id='loginPassword' name='loginPassword'></input>
 
           <button type='submit'>Submit</button>
+
+          <div id='login-to-reg'><Link to='/register'>Don't have an account?</Link></div>
           
         </form>
 

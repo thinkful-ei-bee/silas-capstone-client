@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ApiServices from '../services/api-service'
 import history from '../history'
+import './Registration.css'
 
 export default class Registration extends React.Component {
 
@@ -25,7 +26,16 @@ export default class Registration extends React.Component {
   render() {
     return (
       <div className='registration'>
+        
+        <nav role='navigation'>
+          <h1 onClick={() => this.props.history.history.push('/')}>Quoter</h1>
+        </nav>
+
         <h2>Register for an Account</h2>
+
+        <div id='register-error' className='error'>
+          {this.props.stateError && this.props.stateError}
+        </div>
 
         <form id='register-form' onSubmit={(event) => this.handleSubmit(event)}>
 
@@ -33,9 +43,9 @@ export default class Registration extends React.Component {
           <input type='text' id='username' name='username'></input>
 
           <label htmlFor='password'>Password</label>
-          <input type='text' id='password' name='password'></input>
+          <input type='password' id='password' name='password'></input>
 
-          <button type='submit'>Submit</button>
+          <button className='pure-button' type='submit'>Submit</button>
         </form>
 
         <Link to='/login'>Already have an account?</Link>
