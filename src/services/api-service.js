@@ -25,7 +25,8 @@ const ApiService = {
     return fetch(`${config.API_ENDPOINT}/auth/login`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/JSON'
+        'content-type': 'application/JSON',
+        'Access-Control-Allow-Origin': 'https://loxphordex-quoter-client.now.sh/login'
       },
       body: JSON.stringify({ username, password })
     })
