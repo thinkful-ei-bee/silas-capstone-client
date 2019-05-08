@@ -66,6 +66,7 @@ export default class EntryPage extends React.Component {
               </nav>
 
               <section id='quotes-area'>
+                <div id='big-Q'>Q</div>
                 <div className='quotebox'>
                   <p className='quote-paragraph'>{
                     this.props.quotes.length > 0 &&
@@ -80,7 +81,11 @@ export default class EntryPage extends React.Component {
 
               <section id='entry-area'>
                 <form id='entry_form' onSubmit={(event) => this.handleSaveEntry(event)}>
-                  <input id='title' name='title' defaultValue={this.props.currentTitle}></input>
+                  <input 
+                    id='title' 
+                    name='title' 
+                    defaultValue={this.props.currentTitle}
+                    placeholder='Title'></input>
                   <textarea 
                     id='entryText' 
                     name='entryText' 
