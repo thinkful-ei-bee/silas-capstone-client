@@ -3,6 +3,7 @@ import ApiServices from '../services/api-service'
 import history from '../history'
 import { Link } from 'react-router-dom'
 import './Login.css'
+import './LoginFullScreen.css'
 
 export default class Login extends React.Component {
 

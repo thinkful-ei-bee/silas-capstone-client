@@ -33,8 +33,9 @@ h1 {
   color: rgb(190, 190, 190);
   font-size: 1.6em;
   margin: 0 auto;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding-top: 18px;
+  padding-bottom: 12px;
+  display: inline-block;
 }
 
 a, u {
@@ -58,7 +59,4 @@ ul {
 }
 
 @media only screen and (min-width: 600px) {
-  body {
-    margin: 0 20%;
-  }
 }

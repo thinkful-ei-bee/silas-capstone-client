@@ -4,11 +4,12 @@
   } 
   .landing-page {
     min-width: 700px;
+    margin: 0 20%;
   }
   .landing-page h1 {
     position: relative;
     left: 6px;
-    top: 44px;
+    top: 48px;
   }
   .landing-page-info {
     display: none;
