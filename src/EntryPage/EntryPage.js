@@ -49,7 +49,7 @@ export default class EntryPage extends React.Component {
       <div className='entry-page'>
         <div className="main-wrap">
 
-            <input id="slide-sidebar" type="checkbox" checked='unchecked' readOnly={true} role="button" />
+            <input id="slide-sidebar" type="checkbox" defaultChecked='true' role="button" />
                 <label htmlFor="slide-sidebar"><span>&#9776;</span></label>
             <div className="sidebar">
               <h2>My Journals</h2>
