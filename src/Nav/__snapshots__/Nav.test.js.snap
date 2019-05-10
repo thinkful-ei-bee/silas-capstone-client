@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav renders the complete page 1`] = `
+<div
+  id="qnav"
+>
+  <h1>
+    Quoter
+  </h1>
+</div>
+`;

@@ -21,6 +21,7 @@ export default class EntryPage extends React.Component {
     const title = event.target.title.value
 
     const entry = { title, content }
+    console.log('TRIED TO GET ENTRIES')
 
     // Send the entry to the server
     ApiService.postEntry(entry)
@@ -48,7 +49,7 @@ export default class EntryPage extends React.Component {
       <div className='entry-page'>
         <div className="main-wrap">
 
-            <input id="slide-sidebar" type="checkbox" checked='false' role="button" />
+            <input id="slide-sidebar" type="checkbox" checked='unchecked' readOnly={true} role="button" />
                 <label htmlFor="slide-sidebar"><span>&#9776;</span></label>
             <div className="sidebar">
               <h2>My Journals</h2>
@@ -72,11 +73,11 @@ export default class EntryPage extends React.Component {
                 <div id='big-Q'>Q</div>
                 <div className='quotebox'>
                   <p className='quote-paragraph'>{
-                    this.props.quotes != null &&
+                    this.props.quotes && this.props.quotes.length > 0 &&
                     this.props.quotes[this.props.quotes.length - 1].quote
                   }</p>
                   <div className='quote-author'>{
-                    this.props.quotes != null &&
+                    this.props.quotes && this.props.quotes.length > 0 &&
                     '- ' + this.props.quotes[this.props.quotes.length - 1].author
                   }</div>
                 </div>

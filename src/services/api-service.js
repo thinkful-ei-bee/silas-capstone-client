@@ -93,6 +93,7 @@ const ApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
     }).then(res => {
+      console.log('RESPONSE: ', res)
       return (!res.ok)
         ? res.json(e => Promise.reject(e))
         : res.json()

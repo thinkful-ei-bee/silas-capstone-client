@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login Page renders the complete page 1`] = `
+exports[`Registration Page renders the complete page 1`] = `
 <div
-  id="login-page"
+  className="registration"
 >
   <nav
     role="navigation"
@@ -15,52 +15,53 @@ exports[`Login Page renders the complete page 1`] = `
     </h1>
   </nav>
   <div
-    id="login-main"
+    id="register-main"
   >
     <h2>
-      Login to Quoter
+      Register for an Account
     </h2>
     <div
       className="error"
-      role="alert"
+      id="register-error"
     />
     <form
-      id="login-form"
+      id="register-form"
       onSubmit={[Function]}
     >
       <label
-        htmlFor="loginUsername"
+        htmlFor="username"
       >
         Username
       </label>
       <input
-        id="loginUsername"
-        name="loginUsername"
+        id="username"
+        name="username"
         type="text"
       />
       <label
-        htmlFor="loginPassword"
+        htmlFor="password"
       >
         Password
       </label>
       <input
-        id="loginPassword"
-        name="loginPassword"
+        id="password"
+        name="password"
         type="password"
       />
       <button
+        className="pure-button"
         type="submit"
       >
         Submit
       </button>
     </form>
     <div
-      id="login-to-reg"
+      id="reg-to-login"
     >
       <Link
-        to="/register"
+        to="/login"
       >
-        Don't have an account?
+        Already have an account?
       </Link>
     </div>
   </div>
