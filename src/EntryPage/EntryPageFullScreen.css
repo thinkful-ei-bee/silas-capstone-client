@@ -21,6 +21,8 @@
     border-radius: 7px;
     font-size: 16px;
     min-width: 120px;
-    top: 530px;
+    position: absolute;
+    top: 660px;
+    right: 90px;
   }
 }
