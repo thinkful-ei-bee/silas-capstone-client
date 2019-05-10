@@ -5,6 +5,8 @@ A journal that cures writer's block.
 Write about anything, and related quotes
 will appear before you.
 
+![Landing Page](https://i.imgur.com/7Bq8xl5.png)
+
 Live App
 --------
 https://loxphordex-quoter-client.now.sh
@@ -29,9 +31,6 @@ Authorization
 
 Users can sign up to save their entries for later.
 More user functions are in development.
-
-![Landing Page](https://i.imgur.com/7Bq8xl5.png)
-
 
 Summary
 -------
