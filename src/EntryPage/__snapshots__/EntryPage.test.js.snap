@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Entry Page renders the complete page 1`] = `
+<div
+  className="entry-page"
+>
+  <div
+    className="main-wrap"
+  >
+    <input
+      defaultChecked="true"
+      id="slide-sidebar"
+      role="button"
+      type="checkbox"
+    />
+    <label
+      htmlFor="slide-sidebar"
+    >
+      <span>
+        ☰
+      </span>
+    </label>
+    <div
+      className="sidebar"
+    >
+      <h2>
+        My Journals
+      </h2>
+      <UserEntryList
+        handleGetEntry={[Function]}
+      />
+      <button
+        id="logout"
+        onClick={[Function]}
+      >
+        Logout
+      </button>
+    </div>
+    <div
+      className="portfolio"
+    >
+      <nav>
+        <Nav />
+      </nav>
+      <div
+        id="portfolio-main"
+      >
+        <section
+          id="quotes-area"
+        >
+          <div
+            id="big-Q"
+          >
+            Q
+          </div>
+          <div
+            className="quotebox"
+          >
+            <p
+              className="quote-paragraph"
+            />
+            <div
+              className="quote-author"
+            />
+          </div>
+        </section>
+        <section
+          id="entry-area"
+        >
+          <form
+            id="entry_form"
+            onSubmit={[Function]}
+          >
+            <input
+              id="title"
+              name="title"
+              placeholder="Title"
+            />
+            <textarea
+              id="entryText"
+              name="entryText"
+              onChange={[Function]}
+              placeholder="Type anything..."
+            />
+            <button
+              id="save-button"
+              type="submit"
+            >
+              Save
+            </button>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+`;

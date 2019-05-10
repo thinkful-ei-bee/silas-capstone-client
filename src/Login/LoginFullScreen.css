@@ -1,0 +1,17 @@
+@media only screen and (min-width: 600px) {
+  #login-page {
+    position: relative;
+  }
+
+  #login-page input {
+    font-size: 16px;
+  }
+
+  #login-main {
+    margin: auto 20%;
+  }
+
+  #login-form {
+    width: 320px;
+  }
+}

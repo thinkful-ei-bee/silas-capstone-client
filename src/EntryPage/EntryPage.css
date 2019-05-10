@@ -1,18 +1,59 @@
 textarea {
+  font-family: 'Open Sans', sans-serif;
   resize: none;
   min-width: 80%;
   height: 150px;
   border: 4px solid lightgray;
+  padding: 10px;
 }
 
 #quotes-area {
-  height: 288px;
+  min-height: 220px;
+  max-height: 220px;
+  width: 80%;
+  margin: auto;
+  margin-top: 32px;
+}
+
+#entry-area {
+  background-color: rgb(32, 32, 32);
+  margin: auto;
+  width: 90%;
+  border-radius: 7px;
+  padding-bottom: 62px;
+  max-height: 248px;
+}
+
+#big-Q {
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
+  position: absolute;
+  font-size: 343px;
+  opacity: 0.05;
+  top: -27px;
+  left: 19px;
+}
+
+#entry_form {
+  position: relative;
+  top: 20px;
+}
+
+#title {
+  margin-bottom: 20px;
+  font-size: 17px;
 }
 
 #save-button {
   display: block;
   text-align: center;
   margin: auto;
+  font-size: 16px;
+  background-color: white;
+  border: none;
+  border-radius: 7px;
+  margin: 15px auto;
+  min-width: 120px;
 }
 
 #logout {
@@ -24,33 +65,72 @@ textarea {
 }
 
 .sidebar {
-    background-color: black;
-    width: 150px;
+    background-color: rgb(209, 84, 53);
+    min-width: 300px;
+    max-width: 330px;
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity .3s;
 }
 
-.sidebar h1 {
+.sidebar h2 {
+    padding: 60px;
+    padding-bottom: 40px;
+    background-color: rgb(32, 32, 32);
     color: white;
+    margin: 0;
+    position: relative;
+    top: 0px;
+}
+
+.sidebar ul {
+  position: relative;
+  top: 20px;
+  max-height: 540px;
+}
+
+.sidebar li {
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  border-radius: 3px;
+}
+
+.sidebar li h3 {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+#logout {
+  position: relative;
+  top: 300px;
+  font-size: 20px;
 }
 
 .portfolio {
-    background-color: rgb(32, 32, 32);
-    padding: 5%;
+    background-color: white;
+    padding: 0;
     position: absolute;
     top: 0;
-    left: 150px;
+    left: 0px;
     right: 0;
     bottom: 0;
     
-    -moz-transition: left 0.5s ease;
-    transition: left 0.5s ease;
+    -moz-transition: left 0.2s ease;
+    transition: left 0.2s ease;
 }
 
 input[type=checkbox] {
    display: none;
+}
+
+input:checked ~ .sidebar {
+  opacity: 0;
+  pointer-events: none;
 }
 
 input:checked ~ .portfolio { 
@@ -58,7 +138,7 @@ input:checked ~ .portfolio {
 }
 
 input:checked ~ label {
-    left: 10px;
+    left: 14px;
 }
 
 .main-wrap label {
@@ -67,12 +147,12 @@ input:checked ~ label {
     padding-bottom: 3px;
     z-index: 2;
     position: absolute;
-    top: 10px;
-    left: 150px;
+    top: 12px;
+    left: 14px;
     background-color: rgb(190, 190, 190);
     color: rgb(32, 32, 32);
     width: 36px;
     
-    -moz-transition: left 0.5s ease;
-    transition: left 0.5s ease;
+    -moz-transition: left 0.2s ease;
+    transition: left 0.2s ease;
 }

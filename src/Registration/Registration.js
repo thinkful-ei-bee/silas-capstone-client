@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ApiServices from '../services/api-service'
 import history from '../history'
+import './Registration.css'
+import './RegistrationFullScreen.css'
 
 export default class Registration extends React.Component {
 
@@ -25,20 +27,32 @@ export default class Registration extends React.Component {
   render() {
     return (
       <div className='registration'>
-        <h2>Register for an Account</h2>
+        
+        <nav role='navigation'>
+          <h1 className='pointer' onClick={() => this.props.history.history.push('/')}>Quoter</h1>
+        </nav>
 
-        <form id='register-form' onSubmit={(event) => this.handleSubmit(event)}>
+        <div id='register-main'>
+          <h2>Register for an Account</h2>
 
-          <label htmlFor='username'>Username</label>
-          <input type='text' id='username' name='username'></input>
+          <div id='register-error' className='error'>
+            {this.props.stateError && this.props.stateError}
+          </div>
 
-          <label htmlFor='password'>Password</label>
-          <input type='text' id='password' name='password'></input>
+          <form id='register-form' onSubmit={(event) => this.handleSubmit(event)}>
 
-          <button type='submit'>Submit</button>
-        </form>
+            <label htmlFor='username'>Username</label>
+            <input type='text' id='username' name='username'></input>
 
-        <Link to='/login'>Already have an account?</Link>
+            <label htmlFor='password'>Password</label>
+            <input type='password' id='password' name='password'></input>
+
+            <button className='pure-button' type='submit'>Submit</button>
+          </form>
+
+          <div id='reg-to-login'><Link to='/login'>Already have an account?</Link></div>
+        </div>
+
       </div>
     )
   }

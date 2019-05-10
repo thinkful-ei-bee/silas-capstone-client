@@ -1,15 +1,91 @@
+.landing-full-info {
+  display: none;
+}
+
+.landing-page {
+  margin: 5%;
+}
+
+.landing-page h1 {
+  font-size: 5.2em;
+}
+
+.landing-button {
+  position: relative;
+  top: 20px;
+  margin: 9px auto;
+}
+
 .landing-page-info {
-  background-color: rgb(190, 190, 190);
-  color: rgb(32, 32, 32);
-  text-align: left;
-  height: 200px;
-  width: 100%;
-  font-size: 16px;
-  padding-top: 10em;
-  margin-top: 12px;
+  background-color: rgb(1, 97, 87, 38);
+  color: rgb(218, 218, 218);
+  border-radius: 7%;
+  text-align: center;
+  height: 190px;
+  width: 92%;
+  max-width: 300px;
+  font-size: 15px;
+  padding-top: 4em;
+  margin: auto;
+  margin-top: 13px;
+}
+
+.landing-page-info p {
+  margin: 0 17%;
+  position: relative;
+  top: 12px;
+}
+
+#landing-nav {
+  text-align: right;
+  background-color: white;
+  margin-top: 25px;
+  width: 90%;
+}
+
+#landing-header {
+  font-size: 42px;
+  color: white;
 }
 
 #start-writing {
   font-family: 'Satisfy', cursive;
   font-size: 28px;
+  background-color: white;
+  width: 92%;
+  border: 1px solid rgb(46, 46, 46);
+  border-radius: 21px;
+}
+
+#start-writing a {
+  color: rgb(46, 46, 46);
+}
+
+#register {
+  font-size: 28px;
+  background-color: rgb(209, 84, 53);
+  width: 92%;
+  border-radius: 21px;
+}
+
+#register a {
+  color: white;
+}
+
+.sub-info {
+  text-align: left;
+  width: 90%;
+  margin: 22px auto 10px auto;
+}
+
+.sub-info h3 {
+  margin: 0;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.sub-info p {
+  margin: 0;
+  font-size: 12px;
+  width: 70%;
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import ApiServices from '../services/api-service'
-import history from '../history'
+import { Link } from 'react-router-dom'
+import './Login.css'
+import './LoginFullScreen.css'
 
 export default class Login extends React.Component {
 
@@ -20,7 +22,6 @@ export default class Login extends React.Component {
     .then(res => {
       this.props.clearError()
       //window.location.reload()
-      console.log(history.location.pathname)
     })
     .catch(res => {
       this.props.handleError(res)
@@ -35,24 +36,30 @@ export default class Login extends React.Component {
     const error = this.props.stateError
     return(
       <div id='login-page'>
+        <nav role='navigation'>
+          <h1 className='pointer' onClick={() => this.props.history.push('/')}>Quoter</h1>
+        </nav>
 
-        <h2>Login to Quoter</h2>      
-
-        <form id='login-form' onSubmit={event => this.handleSubmitJwtAuth(event)}>
-          
-          <div role='alert'>
+        <div id='login-main'>
+          <h2>Login to Quoter</h2>    
+          <div role='alert' className='error'>
             {error && <p className='red'>{error}</p>}
           </div>
+          <form id='login-form' onSubmit={event => this.handleSubmitJwtAuth(event)}>
+            
 
-          <label htmlFor='loginUsername'>Username</label>
-          <input type='text' id='loginUsername' name='loginUsername'></input>
+            <label htmlFor='loginUsername'>Username</label>
+            <input type='text' id='loginUsername' name='loginUsername'></input>
 
-          <label htmlFor='loginPassword'>Password</label>
-          <input type='password' id='loginPassword' name='loginPassword'></input>
+            <label htmlFor='loginPassword'>Password</label>
+            <input type='password' id='loginPassword' name='loginPassword'></input>
 
-          <button type='submit'>Submit</button>
-          
-        </form>
+            <button type='submit'>Submit</button>
+          </form>
+
+          <div id='login-to-reg'><Link to='/register'>Don't have an account?</Link></div>
+        
+        </div>  
 
       </div>
 

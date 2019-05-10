@@ -10,6 +10,14 @@
       {
         "src": ".*",
         "dest": "/index.html"
+      },
+      {
+        "src": ".*",
+        "dest": "/manifest.json"
+      },
+      {
+        "src": ".*",
+        "dest": "/favicon.ico"
       }
   ]
 }

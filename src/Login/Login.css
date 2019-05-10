@@ -1,0 +1,42 @@
+#login-page label, input {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+#login-page input {
+  border: 1px solid gray;
+  border-radius: 4px;
+  margin: 5px auto;
+}
+
+#login-page .error {
+  margin-bottom: 10px;
+  min-height: 22px;
+}
+
+#login-page h2 {
+  margin: 20px auto 12px auto;
+}
+
+#login-form {
+  background-color: rgb(209, 84, 53);
+  width: 80%;
+  margin: auto;
+  padding: 10px 0;
+  padding-top: 15px;
+  border-radius: 15px;
+}
+
+#login-form button {
+  background-color: white;
+  border-radius: 21px;
+  border: none;
+  margin: 14px auto 10px auto;
+  font-size: 16px;
+  padding: 4px 12px;
+}
+
+#login-to-reg {
+  margin: 18px auto;
+}

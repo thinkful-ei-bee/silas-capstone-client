@@ -1,13 +1,16 @@
 import React from 'react'
 import './EntryPage.css'
+import './EntryPageFullScreen.css'
 import TokenService from '../services/token-service'
 import ApiService from '../services/api-service'
 import UserEntryList from '../UserEntryList/UserEntryList'
+import Nav from '../Nav/Nav'
 
 export default class EntryPage extends React.Component {
 
   handleLogout() {
     TokenService.clearAuthToken()
+    this.props.resetState()
     this.props.clearError()
     this.props.history.history.push('/')
   }
@@ -32,7 +35,6 @@ export default class EntryPage extends React.Component {
   }
 
   handleGetEntry = (entryId) => {
-    console.log(entryId)
     ApiService.getEntryById(entryId)
       .then(entry => {
         this.props.updateEntry(entry.content)
@@ -45,7 +47,7 @@ export default class EntryPage extends React.Component {
       <div className='entry-page'>
         <div className="main-wrap">
 
-            <input id="slide-sidebar" type="checkbox" checked='false' role="button" />
+            <input id="slide-sidebar" type="checkbox" defaultChecked='true' role="button" />
                 <label htmlFor="slide-sidebar"><span>&#9776;</span></label>
             <div className="sidebar">
               <h2>My Journals</h2>
@@ -60,18 +62,20 @@ export default class EntryPage extends React.Component {
             </div>
 
             <div className="portfolio">
-              <header role='heading'>
-                <h1>Quoter</h1>
-              </header>
+              <nav>
+                <Nav />
+              </nav>
 
+              <div id='portfolio-main'>
               <section id='quotes-area'>
+                <div id='big-Q'>Q</div>
                 <div className='quotebox'>
                   <p className='quote-paragraph'>{
-                    this.props.quotes.length > 0 &&
+                    this.props.quotes && this.props.quotes.length > 0 &&
                     this.props.quotes[this.props.quotes.length - 1].quote
                   }</p>
                   <div className='quote-author'>{
-                    this.props.quotes.length > 0 &&
+                    this.props.quotes && this.props.quotes.length > 0 &&
                     '- ' + this.props.quotes[this.props.quotes.length - 1].author
                   }</div>
                 </div>
@@ -79,8 +83,13 @@ export default class EntryPage extends React.Component {
 
               <section id='entry-area'>
                 <form id='entry_form' onSubmit={(event) => this.handleSaveEntry(event)}>
-                  <input id='title' name='title' defaultValue={this.props.currentTitle}></input>
+                  <input 
+                    id='title' 
+                    name='title' 
+                    defaultValue={this.props.currentTitle}
+                    placeholder='Title'></input>
                   <textarea 
+                    placeholder='Type anything...'
                     id='entryText' 
                     name='entryText' 
                     value={this.props.currentEntry}
@@ -89,6 +98,7 @@ export default class EntryPage extends React.Component {
                   <button type='submit' id='save-button'>Save</button>
                 </form>  
               </section>            
+              </div>
             </div>
         </div>        
       </div>

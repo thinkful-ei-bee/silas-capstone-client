@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Registration Page renders the complete page 1`] = `
+<div
+  className="registration"
+>
+  <nav
+    role="navigation"
+  >
+    <h1
+      className="pointer"
+      onClick={[Function]}
+    >
+      Quoter
+    </h1>
+  </nav>
+  <div
+    id="register-main"
+  >
+    <h2>
+      Register for an Account
+    </h2>
+    <div
+      className="error"
+      id="register-error"
+    />
+    <form
+      id="register-form"
+      onSubmit={[Function]}
+    >
+      <label
+        htmlFor="username"
+      >
+        Username
+      </label>
+      <input
+        id="username"
+        name="username"
+        type="text"
+      />
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+      />
+      <button
+        className="pure-button"
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+    <div
+      id="reg-to-login"
+    >
+      <Link
+        to="/login"
+      >
+        Already have an account?
+      </Link>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Page renders the complete page 1`] = `
+<ul
+  id="user-entry-list"
+/>
+`;
