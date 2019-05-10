@@ -8,7 +8,7 @@ exports[`Entry Page renders the complete page 1`] = `
     className="main-wrap"
   >
     <input
-      checked="false"
+      defaultChecked="true"
       id="slide-sidebar"
       role="button"
       type="checkbox"
