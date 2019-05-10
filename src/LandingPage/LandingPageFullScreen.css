@@ -54,6 +54,8 @@
   #landing-full-info-block p {
     max-width: 80%;
     margin: auto;
+    position: relative;
+    bottom: 36px;
   }
   .sub-info {
     margin: 40px auto 10px auto

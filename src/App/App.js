@@ -40,8 +40,8 @@ class App extends React.Component {
   }
 
   handleError = (response) => {
-    console.log('error: ', response.error.name)
-    this.setState({ error: response.error.name })
+    console.log('error: ', response.error)
+    this.setState({ error: response.error })
   }
 
   clearError = () => {
@@ -79,6 +79,9 @@ class App extends React.Component {
             this.setState({
               quotes: accum
             })
+          })
+          .catch(err => {
+            console.log(err)
           })
       }
 
