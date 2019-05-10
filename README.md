@@ -30,5 +30,5 @@ Authorization
 Users can sign up to save their entries for later.
 More user functions are in development.
 
-https://imgur.com/gallery/zirjhSs
+![Landing Page]https://imgur.com/gallery/zirjhSs
 
