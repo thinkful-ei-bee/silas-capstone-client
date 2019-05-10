@@ -21,7 +21,6 @@ export default class EntryPage extends React.Component {
     const title = event.target.title.value
 
     const entry = { title, content }
-    console.log('TRIED TO GET ENTRIES')
 
     // Send the entry to the server
     ApiService.postEntry(entry)
@@ -36,7 +35,6 @@ export default class EntryPage extends React.Component {
   }
 
   handleGetEntry = (entryId) => {
-    console.log(entryId)
     ApiService.getEntryById(entryId)
       .then(entry => {
         this.props.updateEntry(entry.content)

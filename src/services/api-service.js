@@ -93,7 +93,6 @@ const ApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
     }).then(res => {
-      console.log('RESPONSE: ', res)
       return (!res.ok)
         ? res.json(e => Promise.reject(e))
         : res.json()
@@ -121,7 +120,6 @@ const ApiService = {
       },
     })
     .then(res => {
-      console.log(res)
       return (!res.ok)
         ? res.json().then(e => Promise.reject(e))
         : res.json()

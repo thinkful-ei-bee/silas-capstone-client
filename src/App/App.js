@@ -40,7 +40,6 @@ class App extends React.Component {
   }
 
   handleError = (response) => {
-    console.log('error: ', response.error)
     this.setState({ error: response.error })
   }
 

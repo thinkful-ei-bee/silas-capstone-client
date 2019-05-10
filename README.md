@@ -32,3 +32,29 @@ More user functions are in development.
 
 ![Landing Page](https://i.imgur.com/7Bq8xl5.png)
 
+
+Summary
+-------
+
+Creative writing requires a lot of inspiration. The idea
+for this app came from a brainstorming session about the topic of 
+inspiration and writer's block. 
+
+This app is meant to be accessible to everybody, which is
+why an account is not required. A user with writer's block
+probably lacks interest in signing up for yet another web
+service.
+
+Quoter is not a full-scale writing app. It is simply
+a quick tool for sparking an idea, or for discovering
+a new author.
+
+Tech
+----
+
+Client: HTML, JS, CSS3, React, React-Router-Dom, 
+Node.js, JWT, Enzyme, Chai
+
+Server: JS, Node.js, Express, Knex, Postgres, Postgrator, SQL, JWT, Nodemon, CORS, Helmet, Morgan, Supertest, Mocha, Chai, XSS, bcryptjs
+
+Deployment: Zeit, Heroku
