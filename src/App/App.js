@@ -40,12 +40,22 @@ class App extends React.Component {
   }
 
   handleError = (response) => {
-    console.log('error: ', response)
-    this.setState({ error: response.error })
+    console.log('error: ', response.error.name)
+    this.setState({ error: response.error.name })
   }
 
   clearError = () => {
     this.setState({ error: null })
+  }
+
+  resetState = () => {
+    this.setState({
+      entry: '',
+      title: '',
+      userEntries: [],
+      quotes: [],
+      error: null,
+    })
   }
 
   componentDidMount() {
@@ -115,7 +125,8 @@ class App extends React.Component {
             currentEntry={this.state.entry}
             currentTitle={this.state.title}
             handleError={this.handleError}
-            clearError={this.clearError}      
+            clearError={this.clearError}
+            resetState={this.resetState}     
             quotes={this.state.quotes}
             updateEntry={this.updateEntry}
             updateTitle={this.updateTitle}

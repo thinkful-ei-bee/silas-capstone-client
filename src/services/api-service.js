@@ -26,7 +26,7 @@ const ApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/JSON',
-        'Access-Control-Allow-Origin': 'https://loxphordex-quoter-client.now.sh/'
+        'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify({ username, password })
     })

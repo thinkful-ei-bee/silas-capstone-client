@@ -140,7 +140,7 @@ input:checked ~ label {
     font-size: 24px;
     padding-bottom: 3px;
     z-index: 2;
-    position: fixed;
+    position: absolute;
     top: 12px;
     left: 14px;
     background-color: rgb(190, 190, 190);

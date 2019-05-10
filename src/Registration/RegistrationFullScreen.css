@@ -1,17 +1,13 @@
 @media only screen and (min-width: 600px) {
-  #login-page {
-    position: relative;
-  }
-
-  #login-page input {
+  .registration input {
     font-size: 16px;
   }
 
-  #login-main {
+  #register-main {
     margin: auto 20%;
   }
 
-  #login-form {
+  #register-form {
     width: 320px;
   }
 }

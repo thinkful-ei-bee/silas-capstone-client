@@ -1,5 +1,6 @@
 import React from 'react'
 import './EntryPage.css'
+import './EntryPageFullScreen.css'
 import TokenService from '../services/token-service'
 import ApiService from '../services/api-service'
 import UserEntryList from '../UserEntryList/UserEntryList'
@@ -9,6 +10,7 @@ export default class EntryPage extends React.Component {
 
   handleLogout() {
     TokenService.clearAuthToken()
+    this.props.resetState()
     this.props.clearError()
     this.props.history.history.push('/')
   }
@@ -65,15 +67,16 @@ export default class EntryPage extends React.Component {
                 <Nav />
               </nav>
 
+              <div id='portfolio-main'>
               <section id='quotes-area'>
                 <div id='big-Q'>Q</div>
                 <div className='quotebox'>
                   <p className='quote-paragraph'>{
-                    this.props.quotes.length > 0 &&
+                    this.props.quotes != null &&
                     this.props.quotes[this.props.quotes.length - 1].quote
                   }</p>
                   <div className='quote-author'>{
-                    this.props.quotes.length > 0 &&
+                    this.props.quotes != null &&
                     '- ' + this.props.quotes[this.props.quotes.length - 1].author
                   }</div>
                 </div>
@@ -96,6 +99,7 @@ export default class EntryPage extends React.Component {
                   <button type='submit' id='save-button'>Save</button>
                 </form>  
               </section>            
+              </div>
             </div>
         </div>        
       </div>
