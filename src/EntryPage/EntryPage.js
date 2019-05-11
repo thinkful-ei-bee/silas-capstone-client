@@ -23,15 +23,17 @@ export default class EntryPage extends React.Component {
     const entry = { title, content }
 
     // Send the entry to the server
-    ApiService.postEntry(entry)
-      .then(() => {
-        ApiService.getUserEntries()
-        .then(entries => {
-          this.props.updateUserEntries(entries)
+    if(TokenService.getAuthToken()) {
+      ApiService.postEntry(entry)
+        .then(() => {
+          ApiService.getUserEntries()
+          .then(entries => {
+            this.props.updateUserEntries(entries)
+          })
+          .catch(err => this.props.handleError(err))        
         })
-        .catch(err => this.props.handleError(err))        
-      })
-      .catch(err => this.props.handleError(err))
+        .catch(err => this.props.handleError(err))
+    }
   }
 
   handleGetEntry = (entryId) => {
