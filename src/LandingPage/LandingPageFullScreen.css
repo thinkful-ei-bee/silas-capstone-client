@@ -21,6 +21,9 @@
   .landing-full-info h1 {
     color: white;
   }
+  #full-header {
+    pointer-events: none;
+  }
   #landing-full-head-block {
     display: inline-block;
     background-color: rgb(1, 97, 87, 38);
@@ -49,7 +52,8 @@
     font-size: 18px;
     padding-top: 4em;
     margin: auto 5px;
-    margin-top: 30px;    
+    margin-top: 30px;
+    pointer-events: none;
   }
   #landing-full-info-block p {
     max-width: 80%;
@@ -58,7 +62,8 @@
     bottom: 36px;
   }
   .sub-info {
-    margin: 40px auto 10px auto
+    margin: 40px auto 10px auto;
+    pointer-events: none;
   }
   .sub-info h3 {
     font-size: 15px;
@@ -68,9 +73,19 @@
     margin-bottom: 13px;
   }
   #start-writing {
-    width: 48%;
+    width: 300px;
+    font-size: 24px;
+  }
+  #start-writing a {
+    width: 94%;
+    border-radius: 7px
   }
   #register {
-    width: 40%;
+    width: 230px;
+    font-size: 22px;
+  }
+  #register a {
+    width: 94%;
+    border-radius: 7px
   }
 }

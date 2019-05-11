@@ -7,6 +7,12 @@ textarea {
   padding: 10px;
 }
 
+#portfolio-main {
+  margin: auto;
+  min-width: 80%;
+  background-color: white;
+}
+
 #quotes-area {
   min-height: 220px;
   max-height: 220px;
@@ -32,6 +38,7 @@ textarea {
   opacity: 0.05;
   top: -27px;
   left: 19px;
+  pointer-events: none;
 }
 
 #entry_form {

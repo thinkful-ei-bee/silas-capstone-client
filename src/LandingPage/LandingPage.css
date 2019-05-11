@@ -59,6 +59,8 @@
 
 #start-writing a {
   color: rgb(46, 46, 46);
+  width: 94%;
+  border-radius: 7px
 }
 
 #register {
@@ -66,6 +68,11 @@
   background-color: rgb(209, 84, 53);
   width: 92%;
   border-radius: 21px;
+}
+
+#register a {
+  width: 94%;
+  border-radius: 7px
 }
 
 #register a {

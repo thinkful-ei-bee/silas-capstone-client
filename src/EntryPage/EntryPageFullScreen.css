@@ -1,14 +1,36 @@
 @media only screen and (min-width: 600px) {
+  nav {
+    height: 60px;
+  }
+  #qnav h1 {
+    padding-top: 10px;
+  }
+  .portfolio {
+    background-color: white;
+  }
   #portfolio-main {
-    margin: auto 20%;
-    min-width: 575px;
+    position: relative;
+    top: 27px;
+    margin: auto;
+    width: 600px;
+    min-width: 0%;
+    box-shadow: 0 22px 22px 0 rgba(0, 0, 0, 0.2), 0 12px 20px 0 rgba(0, 0, 0, 0.19)
+  }
+  #quotes-area {
+    width: 500px;
+    min-height: 240px;
+    margin: 0;
+    margin-top: 0;
+    display: inline-block;
   }
   #entry-area {
-    min-width: 575px;
+    width: 600px;
+    margin: 0;
+    display: inline-block;
   }
   #big-Q {
-    top: -16px;
-    left: 148px;
+    top: -111px;
+    left: 21px;
   }
   textarea {
     font-size: 16px;
