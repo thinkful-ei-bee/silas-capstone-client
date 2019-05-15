@@ -1,6 +1,7 @@
 import React from 'react'
 import './EntryPage.css'
 import './EntryPageFullScreen.css'
+import { Link } from 'react-router-dom'
 import TokenService from '../services/token-service'
 import ApiService from '../services/api-service'
 import UserEntryList from '../UserEntryList/UserEntryList'
@@ -60,12 +61,18 @@ export default class EntryPage extends React.Component {
                 updateTitle={this.props.updateTitle}
                 handleGetEntry={this.handleGetEntry}
               />
-              <button id='logout' onClick={() => this.handleLogout()}>Logout</button>
+              {!TokenService.getAuthToken() && 
+              <div id='sidebar-signup-info'>
+                <p>Sign up to save your entries. It's free!</p>
+                <Link to='/register'>Sign Up</Link>
+                <Link to='/login'>Login</Link>
+              </div>}
+              {TokenService.getAuthToken() && <button id='logout' onClick={() => this.handleLogout()}>Logout</button>}
             </div>
 
             <div className="portfolio">
               <nav>
-                <Nav />
+                <Nav history={this.props.history} />
               </nav>
 
               <div id='portfolio-main'>

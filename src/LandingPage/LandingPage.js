@@ -31,7 +31,7 @@ export default class LandingPage extends React.Component {
           <p>Quoter scans what you write and finds quotes to match.</p>
 
           <h3>A treatment for writer's block</h3>
-          <p>Discover new authors as well as new perspecives.</p>
+          <p>Discover new authors as well as new perspectives.</p>
         </div>
 
         <div className='landing-button' id='start-writing'><Link to='/entry'>Start Writing</Link></div>

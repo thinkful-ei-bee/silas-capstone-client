@@ -68,7 +68,7 @@ class App extends React.Component {
           .then(quote => {
 
             if (!quote) {
-              console.log(`No match for ${quote}`)
+              console.error(`No match for ${quote}`)
               return
             }
 
@@ -80,8 +80,7 @@ class App extends React.Component {
             })
           })
           .catch(err => {
-            console.log(err)
-            
+            console.error(err)
           })
       }
 

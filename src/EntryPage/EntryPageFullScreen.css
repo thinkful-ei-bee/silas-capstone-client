@@ -14,7 +14,7 @@
     margin: auto;
     width: 600px;
     min-width: 0%;
-    box-shadow: 0 22px 22px 0 rgba(0, 0, 0, 0.2), 0 12px 20px 0 rgba(0, 0, 0, 0.19)
+    box-shadow: 0 15px 15px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19)
   }
   #quotes-area {
     width: 500px;
@@ -37,6 +37,8 @@
   }
   .sidebar {
     min-height: 632px;
+    min-width: 300px;
+    max-width: 330px;
   }
   #logout {
     color: rgb(32, 32, 32);
@@ -44,7 +46,7 @@
     font-size: 16px;
     min-width: 120px;
     position: absolute;
-    top: 660px;
-    right: 90px;
+    top: 528px;
+    right: 110px;
   }
 }

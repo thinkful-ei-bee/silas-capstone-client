@@ -1,3 +1,17 @@
 #user-entry-list li {
   list-style: none;
 }
+
+.entry-list-item {
+  display: inline-block;
+  width: 190px;
+}
+
+.delete-button {
+  position: relative;
+}
+
+.fa-trash {
+  font-size: 20px;
+  color: lightslategrey;
+}

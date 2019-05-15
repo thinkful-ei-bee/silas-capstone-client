@@ -16,7 +16,6 @@ describe('Entry Page', () => {
 
   it('initially renders no quotes', () => {
     const wrapper = mount(<EntryPage />)
-    console.log(wrapper.debug())
 
     wrapper.setProps({ name: 'Moe' })
 
