@@ -15,7 +15,6 @@ export default class UserEntryList extends React.Component {
   }
 
   handleDelete = (id) => {
-    console.log(id)
     if(TokenService.getAuthToken()) {
       ApiService.deleteEntry(id)
         .then(() => {
