@@ -19,7 +19,7 @@
   margin: 20px auto 12px auto;
 }
 
-#register-form {
+.register-form {
   background-color: rgb(231, 215, 187, 98);
   width: 80%;
   margin: auto;
@@ -28,7 +28,7 @@
   border-radius: 15px;
 }
 
-#register-form button {
+.register-form button {
   background-color: white;
   border-radius: 21px;
   border: none;
@@ -37,6 +37,6 @@
   padding: 4px 12px;
 }
 
-#reg-to-login {
+.reg-to-login {
   margin: 18px auto;
 }

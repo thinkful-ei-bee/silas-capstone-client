@@ -35,17 +35,17 @@ export default class Login extends React.Component {
   render() {
     const error = this.props.stateError
     return(
-      <div id='login-page'>
+      <div className='login-page'>
         <nav role='navigation'>
           <h1 className='pointer' onClick={() => this.props.history.push('/')}>Quoter</h1>
         </nav>
 
-        <div id='login-main'>
+        <div className='login-main'>
           <h2>Login to Quoter</h2>    
           <div role='alert' className='error'>
             {error && <p className='red'>{error}</p>}
           </div>
-          <form id='login-form' onSubmit={event => this.handleSubmitJwtAuth(event)}>
+          <form className='login-form' onSubmit={event => this.handleSubmitJwtAuth(event)}>
             
 
             <label htmlFor='loginUsername'>Username</label>
@@ -57,7 +57,7 @@ export default class Login extends React.Component {
             <button type='submit'>Submit</button>
           </form>
 
-          <div id='login-to-reg'><Link to='/register'>Don't have an account?</Link></div>
+          <div className='login-to-reg'><Link to='/register'>Don't have an account?</Link></div>
         
         </div>  
 

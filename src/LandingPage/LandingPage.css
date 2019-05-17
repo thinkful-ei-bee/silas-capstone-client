@@ -36,19 +36,19 @@
   top: 12px;
 }
 
-#landing-nav {
+.landing-nav {
   text-align: right;
   background-color: white;
   margin-top: 25px;
   width: 90%;
 }
 
-#landing-header {
+.landing-header {
   font-size: 42px;
   color: white;
 }
 
-#start-writing {
+.start-writing {
   font-family: 'Satisfy', cursive;
   font-size: 28px;
   background-color: white;
@@ -57,25 +57,22 @@
   border-radius: 21px;
 }
 
-#start-writing a {
+.start-writing a {
   color: rgb(46, 46, 46);
   width: 94%;
   border-radius: 7px
 }
 
-#register {
+.register {
   font-size: 28px;
   background-color: rgb(209, 84, 53);
   width: 92%;
   border-radius: 21px;
 }
 
-#register a {
+.register a {
   width: 94%;
-  border-radius: 7px
-}
-
-#register a {
+  border-radius: 7px;
   color: white;
 }
 

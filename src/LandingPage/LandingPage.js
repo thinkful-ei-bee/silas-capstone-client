@@ -8,20 +8,20 @@ export default class LandingPage extends React.Component {
     return (
       <div className='landing-page'>
 
-        <nav role='navigation' id='landing-nav'>
-          <div id='landing-login'><Link to='/login'>Login</Link></div>  
+        <nav role='navigation' className='landing-nav'>
+          <div className='landing-login'><Link to='/login'>Login</Link></div>  
         </nav>
 
         <div className='landing-page-info'>
-          <h1 id='landing-header'>Quoter</h1>
+          <h1 className='landing-header'>Quoter</h1>
           <p>Write about anything. See what the greatest minds have to say about it.</p>
         </div>
 
         <div className='landing-full-info'>
-          <div id='landing-full-head-block' className='full-block'>
-            <h1 id='full-header'>Quoter</h1>
+          <div className='landing-full-head-block full-block'>
+            <h1 className='full-header'>Quoter</h1>
           </div>
-          <div id='landing-full-info-block' className='full-block'>
+          <div className='landing-full-info-block full-block'>
             <p>Write about anything. See what the greatest minds have to say about it.</p>
           </div>
         </div>
@@ -34,8 +34,8 @@ export default class LandingPage extends React.Component {
           <p>Discover new authors as well as new perspectives.</p>
         </div>
 
-        <div className='landing-button' id='start-writing'><Link to='/entry'>Start Writing</Link></div>
-        <div className='landing-button' id='register'><Link to='/register'>Sign Up</Link></div>
+        <div className='landing-button start-writing'><Link to='/entry'>Start Writing</Link></div>
+        <div className='landing-button register'><Link to='/register'>Sign Up</Link></div>
 
       </div>
     )

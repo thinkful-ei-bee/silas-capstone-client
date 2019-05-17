@@ -2,13 +2,13 @@
   nav {
     height: 60px;
   }
-  #qnav h1 {
+  .qnav h1 {
     padding-top: 10px;
   }
   .portfolio {
     background-color: white;
   }
-  #portfolio-main {
+  .portfolio-main {
     position: relative;
     top: 27px;
     margin: auto;
@@ -16,19 +16,19 @@
     min-width: 0%;
     box-shadow: 0 15px 15px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19)
   }
-  #quotes-area {
+  .quotes-area {
     width: 500px;
     min-height: 240px;
     margin: 0;
     margin-top: 0;
     display: inline-block;
   }
-  #entry-area {
+  .entry-area {
     width: 600px;
     margin: 0;
     display: inline-block;
   }
-  #big-Q {
+  .big-Q {
     top: -111px;
     left: 21px;
   }
@@ -40,7 +40,7 @@
     min-width: 300px;
     max-width: 330px;
   }
-  #logout {
+  .logout {
     color: rgb(32, 32, 32);
     border-radius: 7px;
     font-size: 16px;

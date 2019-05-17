@@ -8,13 +8,13 @@ textarea {
   font-size: 13px;
 }
 
-#portfolio-main {
+.portfolio-main {
   margin: auto;
   min-width: 80%;
   background-color: white;
 }
 
-#quotes-area {
+.quotes-area {
   min-height: 220px;
   max-height: 220px;
   width: 80%;
@@ -22,7 +22,7 @@ textarea {
   margin-top: 32px;
 }
 
-#entry-area {
+.entry-area {
   background-color: rgb(32, 32, 32);
   margin: auto;
   width: 90%;
@@ -31,7 +31,7 @@ textarea {
   max-height: 248px;
 }
 
-#big-Q {
+.big-Q {
   font-family: 'Poiret One', cursive;
   font-weight: bold;
   position: absolute;
@@ -42,7 +42,7 @@ textarea {
   pointer-events: none;
 }
 
-#entry_form {
+.entry_form {
   position: relative;
   top: 20px;
 }
@@ -52,7 +52,7 @@ textarea {
   font-size: 17px;
 }
 
-#save_button {
+.save_button {
   display: block;
   text-align: center;
   margin: auto;
@@ -64,7 +64,7 @@ textarea {
   min-width: 120px;
 }
 
-#logout {
+.logout {
   color: white;
 }
 
@@ -72,14 +72,14 @@ textarea {
   text-align: left;
 }
 
-#sidebar-signup-info {
+.sidebar-signup-info {
   text-align: center;
   color: white;
   margin: auto;
   width: 230px;
 }
 
-#sidebar-signup-info p {
+.sidebar-signup-info p {
   border: 1px solid white;
   margin-bottom: 205px;
   margin-top: 70px;
@@ -87,7 +87,7 @@ textarea {
   font-weight: 600;
 }
 
-#sidebar-signup-info a {
+.sidebar-signup-info a {
   color: rgb(46, 46, 46);
   min-width: 182px;
   border-radius: 7px;
@@ -136,7 +136,7 @@ textarea {
   margin-bottom: 10px;
 }
 
-#logout {
+.logout {
   position: relative;
   top: 300px;
   font-size: 20px;

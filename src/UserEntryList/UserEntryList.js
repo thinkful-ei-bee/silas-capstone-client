@@ -28,7 +28,7 @@ export default class UserEntryList extends React.Component {
 
   render() {
     return (
-      <ul id='user-entry-list'>
+      <ul className='user-entry-list'>
         {this.props.userEntries && this.props.userEntries.length > 0 && this.props.userEntries.map(entry => {
           return (
             <li key={entry.id}>

@@ -66,12 +66,12 @@ export default class EntryPage extends React.Component {
                 handleGetEntry={this.handleGetEntry}
               />
               {!TokenService.getAuthToken() && 
-              <div id='sidebar-signup-info'>
+              <div className='sidebar-signup-info'>
                 <p>Sign up to save your entries. It's free!</p>
                 <Link to='/register'>Sign Up</Link>
                 <Link to='/login'>Login</Link>
               </div>}
-              {TokenService.getAuthToken() && <button id='logout' onClick={() => this.handleLogout()}>Logout</button>}
+              {TokenService.getAuthToken() && <button className='logout' onClick={() => this.handleLogout()}>Logout</button>}
             </div>
 
             <div className="portfolio">
@@ -79,9 +79,9 @@ export default class EntryPage extends React.Component {
                 <Nav history={this.props.history} />
               </nav>
 
-              <div id='portfolio-main'>
-              <section id='quotes-area'>
-                <div id='big-Q'>Q</div>
+              <div className='portfolio-main'>
+              <section className='quotes-area'>
+                <div className='big-Q'>Q</div>
                 <div className='quotebox'>
                   <p className='quote-paragraph'>{
                     this.props.quotes && this.props.quotes.length > 0 &&
@@ -105,8 +105,8 @@ export default class EntryPage extends React.Component {
                 </div>
               </section>
 
-              <section id='entry-area'>
-                <form id='entry_form' onSubmit={(event) => this.handleSaveEntry(event)}>
+              <section className='entry-area'>
+                <form className='entry_form' onSubmit={(event) => this.handleSaveEntry(event)}>
                   <input 
                     id='title' 
                     name='title' 
@@ -119,7 +119,7 @@ export default class EntryPage extends React.Component {
                     value={this.props.currentEntry}
                     onChange={(event) => this.props.updateEntry(event.target.value)}>
                   </textarea>
-                  <button type='submit' id='save_button' disabled={!toggle}>Save</button>
+                  <button type='submit' className='save_button' disabled={!toggle}>Save</button>
                 </form>  
               </section>            
               </div>

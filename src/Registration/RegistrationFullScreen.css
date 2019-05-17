@@ -3,11 +3,11 @@
     font-size: 16px;
   }
 
-  #register-main {
+  .register-main {
     margin: auto 20%;
   }
 
-  #register-form {
+  .register-form {
     width: 320px;
   }
 }
