@@ -8,6 +8,7 @@ import IdleService from '../services/idle-service'
 import Login from '../Login/Login';
 import history from '../history'
 import TokenService from '../services/token-service';
+import banList from '../quotes/ban-list'
 
 
 class App extends React.Component {
@@ -22,6 +23,7 @@ class App extends React.Component {
       userEntries: [],
       quotes: [],
       error: null,
+      saveToggle: true,
     }
   }
 
@@ -57,34 +59,49 @@ class App extends React.Component {
     })
   }
 
-  componentDidMount() {
-    // Find a new quote every X seconds
-    setInterval(() => {
-      if (this.state.entry.length > 0) {
-        const entry = this.state.entry.split(' ')
-        const subject = entry[Math.floor(Math.random() * entry.length)]
+  toggleSave = () => {
+    this.setState({ saveToggle: !this.state.saveToggle })
+  }
 
-        ApiServices.getQuoteBySubject(subject)
-          .then(quote => {
+  findQuote() {
+      setInterval(() => {
+        if (this.state.entry.length > 0) {
+          const entry = this.state.entry.split(' ')
+          const subject = entry[Math.floor(Math.random() * entry.length)]
 
-            if (!quote) {
-              console.error(`No match for ${quote}`)
-              return
-            }
+          ApiServices.getQuoteBySubject(subject)
+            .then(quote => {
 
-            let accum = this.state.quotes
-            accum.push(quote.contents)
+              if (!quote) {
+                console.error(`No match for ${quote}`)
+                return
+              }
 
-            this.setState({
-              quotes: accum
+              let accum = this.state.quotes
+              accum.push(quote.contents)
+
+              this.setState({
+                quotes: accum
+              })
             })
-          })
-          .catch(err => {
-            console.error(err)
-          })
-      }
+            .catch(err => {
+              console.error(err)
+            })
+        }
 
     }, 8000)
+  }
+
+  checkQuoteIsValid(quote) {
+    if (banList.includes(quote)) {
+      return false;
+    }
+    return true;
+  }
+
+  componentDidMount() {
+    // Find a new quote every X seconds
+    this.findQuote()
 
     // Interval JWT refresh
     IdleService.setIdleCallback(this.logoutFromIdle)
@@ -134,6 +151,8 @@ class App extends React.Component {
             updateTitle={this.updateTitle}
             updateUserEntries={this.updateUserEntries}
             userEntries={this.state.userEntries}
+            toggleSave={this.toggleSave}
+            saveToggle={this.state.saveToggle}
             history={history}
           />} 
         />

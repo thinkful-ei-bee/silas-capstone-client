@@ -29,12 +29,23 @@ exports[`Entry Page renders the complete page 1`] = `
       <UserEntryList
         handleGetEntry={[Function]}
       />
-      <button
-        id="logout"
-        onClick={[Function]}
+      <div
+        id="sidebar-signup-info"
       >
-        Logout
-      </button>
+        <p>
+          Sign up to save your entries. It's free!
+        </p>
+        <Link
+          to="/register"
+        >
+          Sign Up
+        </Link>
+        <Link
+          to="/login"
+        >
+          Login
+        </Link>
+      </div>
     </div>
     <div
       className="portfolio"

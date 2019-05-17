@@ -25,10 +25,12 @@ export default class EntryPage extends React.Component {
 
     // Send the entry to the server
     if(TokenService.getAuthToken()) {
+      this.props.toggleSave()
       ApiService.postEntry(entry)
         .then(() => {
           ApiService.getUserEntries()
           .then(entries => {
+            this.props.toggleSave()
             this.props.updateUserEntries(entries)
           })
           .catch(err => this.props.handleError(err))        
@@ -46,6 +48,8 @@ export default class EntryPage extends React.Component {
   }
 
   render() {
+    let toggle = this.props.saveToggle
+    console.log(toggle)
     return (
       <div className='entry-page'>
         <div className="main-wrap">
@@ -83,10 +87,21 @@ export default class EntryPage extends React.Component {
                     this.props.quotes && this.props.quotes.length > 0 &&
                     this.props.quotes[this.props.quotes.length - 1].quote
                   }</p>
-                  <div className='quote-author'>{
+                  <div className='quote-author'>
+                  
+                  {
+                    this.props.quotes && this.props.quotes.length > 0 && 
+                    !this.props.quotes[this.props.quotes.length - 1].author &&
+                    '- Unknown Author'
+                  }
+                  
+                  {
                     this.props.quotes && this.props.quotes.length > 0 &&
+                    !!this.props.quotes[this.props.quotes.length - 1].author &&
                     '- ' + this.props.quotes[this.props.quotes.length - 1].author
-                  }</div>
+                  }
+
+                  </div>
                 </div>
               </section>
 
@@ -104,7 +119,7 @@ export default class EntryPage extends React.Component {
                     value={this.props.currentEntry}
                     onChange={(event) => this.props.updateEntry(event.target.value)}>
                   </textarea>
-                  <button type='submit' id='save-button'>Save</button>
+                  <button type='submit' id='save_button' disabled={!toggle}>Save</button>
                 </form>  
               </section>            
               </div>

@@ -21,9 +21,9 @@ describe('Entry Page', () => {
 
     expect(wrapper.props('name')).toEqual({ name: 'Moe' })
     expect(wrapper.containsMatchingElement(
-      <button type='submit' id='save-button'>Save</button>
+      <button type='submit' id='save_button'>Save</button>
     )).toBeTruthy()
-    expect(wrapper.find('#save-button').text()).toEqual('Save')
+    expect(wrapper.find('#save_button').text()).toEqual('Save')
     expect(wrapper.find('.quote-paragraph').text()).toEqual('')
     expect(wrapper.find('.quote-author').text()).toEqual('')
   })
