@@ -147,20 +147,17 @@ class App extends React.Component {
           }}>
           <Route exact path='/' history={history} component={LandingPage} />
 
-          <Route path='/entry' history={history} render={(history) => 
+          <Route path='/entry' history={history} render={({history}) => 
             <EntryPage history={history} />} 
           />
 
-          <Route path='/register' render={(history) => 
+          <Route path='/register' render={({history}) => 
             <Registration history={history} />} 
           />
           
-          <Route path='/login' render={({history}) => <Login 
-            handleError={this.handleError}
-            clearError={this.clearError}
-            stateError={this.state.error}
-            history={history}
-          />} />
+          <Route path='/login' render={({history}) => 
+            <Login history={history}/>} 
+          />
         </QuoterContext.Provider>
 
       </div>

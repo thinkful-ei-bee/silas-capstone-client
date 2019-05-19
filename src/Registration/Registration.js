@@ -22,7 +22,7 @@ export default class Registration extends React.Component {
       })
       .then(user => {
         clearError()
-        this.props.history.history.push('/entry')
+        this.props.history.push('/entry')
       })
       .catch(err => handleError(err))
   }
@@ -33,7 +33,7 @@ export default class Registration extends React.Component {
       <div className='registration'>
         
         <nav role='navigation'>
-          <h1 className='pointer' onClick={() => this.props.history.history.push('/')}>Quoter</h1>
+          <h1 className='pointer' onClick={() => this.props.history.push('/')}>Quoter</h1>
         </nav>
 
         <div className='register-main'>

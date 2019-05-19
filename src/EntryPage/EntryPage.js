@@ -15,7 +15,7 @@ export default class EntryPage extends React.Component {
     TokenService.clearAuthToken()
     this.context.resetState()
     this.context.clearError()
-    this.props.history.history.push('/')
+    this.props.history.push('/')
   }
 
   handleSaveEntry = (event) => {

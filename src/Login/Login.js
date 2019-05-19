@@ -3,12 +3,15 @@ import ApiServices from '../services/api-service'
 import { Link } from 'react-router-dom'
 import './Login.css'
 import './LoginFullScreen.css'
+import QuoterContext from '../context/quoter-context'
 
 export default class Login extends React.Component {
+  static contextType = QuoterContext
 
   handleSubmitJwtAuth = (event) => {
     event.preventDefault()
     const { loginUsername, loginPassword } = event.target
+    const  { clearError, handleError } = this.context
 
     ApiServices.postLogin(
       loginUsername.value,
@@ -20,20 +23,15 @@ export default class Login extends React.Component {
       this.props.history.push('/entry')
     })
     .then(res => {
-      this.props.clearError()
-      //window.location.reload()
+      clearError()
     })
     .catch(res => {
-      this.props.handleError(res)
+      handleError(res)
     })
   }
 
-  // componentDidUpdate() {
-  //   this.props.updatePath(history.location.pathname)
-  // }
-
   render() {
-    const error = this.props.stateError
+    const { error } = this.context
     return(
       <div className='login-page'>
         <nav role='navigation'>
