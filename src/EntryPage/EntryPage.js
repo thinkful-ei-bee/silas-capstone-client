@@ -6,50 +6,77 @@ import TokenService from '../services/token-service'
 import ApiService from '../services/api-service'
 import UserEntryList from '../UserEntryList/UserEntryList'
 import Nav from '../Nav/Nav'
+import QuoterContext from '../context/quoter-context'
 
 export default class EntryPage extends React.Component {
+  static contextType = QuoterContext;
 
   handleLogout() {
     TokenService.clearAuthToken()
-    this.props.resetState()
-    this.props.clearError()
+    this.context.resetState()
+    this.context.clearError()
     this.props.history.history.push('/')
   }
 
   handleSaveEntry = (event) => {
     event.preventDefault()
+    const { 
+      toggleSave, updateUserEntries, handleError,
+      currentEntry, currentTitle,
+    } = this.context
+
     const content = event.target.entryText.value
     const title = event.target.title.value
 
     const entry = { title, content }
 
+    if (!currentEntry) {
+      handleError('Sorry, we can\'t save empty documents.')
+      console.log('No Entry')
+      return
+    }
+
+    if (!currentTitle) {
+      handleError('Please add a title.')
+      console.log('No title')
+      return
+    }
+
     // Send the entry to the server
     if(TokenService.getAuthToken()) {
-      this.props.toggleSave()
+      toggleSave()
+
+
       ApiService.postEntry(entry)
         .then(() => {
           ApiService.getUserEntries()
           .then(entries => {
-            this.props.toggleSave()
-            this.props.updateUserEntries(entries)
+            toggleSave()
+            updateUserEntries(entries)
           })
-          .catch(err => this.props.handleError(err))        
+          .catch(err => handleError(err))        
         })
-        .catch(err => this.props.handleError(err))
+        .catch(err => handleError(err))
     }
   }
 
   handleGetEntry = (entryId) => {
     ApiService.getEntryById(entryId)
       .then(entry => {
-        this.props.updateEntry(entry.content)
-        this.props.updateTitle(entry.title)
+        this.context.updateEntry(entry.content)
+        this.context.updateTitle(entry.title)
       })
   }
 
   render() {
-    let toggle = this.props.saveToggle
-    console.log(toggle)
+    let toggle = this.context.saveToggle
+
+    const { 
+      updateEntry, currentEntry, currentTitle,
+      userEntries, updateUserEntries, updateTitle,
+      quotes,
+    } = this.context
+
     return (
       <div className='entry-page'>
         <div className="main-wrap">
@@ -59,10 +86,10 @@ export default class EntryPage extends React.Component {
             <div className="sidebar">
               <h2>My Journals</h2>
               <UserEntryList 
-                userEntries={this.props.userEntries}
-                updateUserEntries={this.props.updateUserEntries}
-                updateEntry={this.props.updateEntry}
-                updateTitle={this.props.updateTitle}
+                userEntries={userEntries}
+                updateUserEntries={updateUserEntries}
+                updateEntry={updateEntry}
+                updateTitle={updateTitle}
                 handleGetEntry={this.handleGetEntry}
               />
               {!TokenService.getAuthToken() && 
@@ -84,21 +111,21 @@ export default class EntryPage extends React.Component {
                 <div className='big-Q'>Q</div>
                 <div className='quotebox'>
                   <p className='quote-paragraph'>{
-                    this.props.quotes && this.props.quotes.length > 0 &&
-                    this.props.quotes[this.props.quotes.length - 1].quote
+                    quotes && quotes.length > 0 &&
+                    quotes[quotes.length - 1].quote
                   }</p>
                   <div className='quote-author'>
                   
                   {
-                    this.props.quotes && this.props.quotes.length > 0 && 
-                    !this.props.quotes[this.props.quotes.length - 1].author &&
+                    quotes && quotes.length > 0 && 
+                    !quotes[quotes.length - 1].author &&
                     '- Unknown Author'
                   }
                   
                   {
-                    this.props.quotes && this.props.quotes.length > 0 &&
-                    !!this.props.quotes[this.props.quotes.length - 1].author &&
-                    '- ' + this.props.quotes[this.props.quotes.length - 1].author
+                    quotes && quotes.length > 0 &&
+                    !!quotes[quotes.length - 1].author &&
+                    '- ' + quotes[quotes.length - 1].author
                   }
 
                   </div>
@@ -110,14 +137,15 @@ export default class EntryPage extends React.Component {
                   <input 
                     id='title' 
                     name='title' 
-                    defaultValue={this.props.currentTitle}
+                    defaultValue={currentTitle}
+                    onChange={(event) => updateTitle(event.target.value)}
                     placeholder='Title'></input>
                   <textarea 
                     placeholder='Type anything...'
                     id='entryText' 
                     name='entryText' 
-                    value={this.props.currentEntry}
-                    onChange={(event) => this.props.updateEntry(event.target.value)}>
+                    value={currentEntry}
+                    onChange={(event) => updateEntry(event.target.value)}>
                   </textarea>
                   <button type='submit' className='save_button' disabled={!toggle}>Save</button>
                 </form>  

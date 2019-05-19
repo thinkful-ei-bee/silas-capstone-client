@@ -4,12 +4,15 @@ import ApiServices from '../services/api-service'
 import history from '../history'
 import './Registration.css'
 import './RegistrationFullScreen.css'
+import QuoterContext from '../context/quoter-context'
 
 export default class Registration extends React.Component {
+  static contextType = QuoterContext
 
   handleSubmit = (event) => {
     event.preventDefault()
     const { username, password } = event.target
+    const { clearError, handleError } = this.context
 
     ApiServices.postUser(username.value, password.value)
       .then(user => {
@@ -18,13 +21,14 @@ export default class Registration extends React.Component {
         history.push('/entry')
       })
       .then(user => {
-        this.props.clearError()
+        clearError()
         this.props.history.history.push('/entry')
       })
-      .catch(err => this.props.handleError(err))
+      .catch(err => handleError(err))
   }
 
   render() {
+    const { error } = this.context
     return (
       <div className='registration'>
         
@@ -36,7 +40,7 @@ export default class Registration extends React.Component {
           <h2>Register for an Account</h2>
 
           <div className='register-error error'>
-            {this.props.stateError && this.props.stateError}
+            {error && error}
           </div>
 
           <form className='register-form' onSubmit={(event) => this.handleSubmit(event)}>

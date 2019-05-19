@@ -9,12 +9,10 @@ import Login from '../Login/Login';
 import history from '../history'
 import TokenService from '../services/token-service';
 import banList from '../quotes/ban-list'
+import QuoterContext from '../context/quoter-context';
 
 
 class App extends React.Component {
-
-// To change routs:
-// return this.props.history.push('/route)
   constructor(props) {
     super(props)
     this.state = {
@@ -120,16 +118,10 @@ class App extends React.Component {
   }
 
   logoutFromIdle = () => {
-    /* remove the token from localStorage */
     TokenService.clearAuthToken()
-    /* remove any queued calls to the refresh endpoint */
     TokenService.clearCallbackBeforeExpiry()
-    /* remove the timeouts that auto logout when idle */
     IdleService.unRegisterIdleResets()
-    /*
-      react won't know the token has been removed from local storage,
-      so we need to tell React to rerender
-    */
+    
     this.forceUpdate()
   }
 
@@ -137,39 +129,39 @@ class App extends React.Component {
     return (
       <div className="App">
 
-        <Route exact path='/' history={history} component={LandingPage} />
+        <QuoterContext.Provider
+          value={{
+            currentEntry: this.state.entry,
+            currentTitle: this.state.title,
+            error: this.state.error,
+            handleError: this.handleError,
+            clearError: this.clearError,
+            resetState: this.resetState,
+            quotes: this.state.quotes,
+            updateEntry: this.updateEntry,
+            updateTitle: this.updateTitle,
+            updateUserEntries: this.updateUserEntries,
+            userEntries: this.state.userEntries,
+            toggleSave: this.toggleSave,
+            saveToggle: this.state.saveToggle,
+          }}>
+          <Route exact path='/' history={history} component={LandingPage} />
 
-        <Route path='/entry' history={history} render={(history) => 
-          <EntryPage 
-            currentEntry={this.state.entry}
-            currentTitle={this.state.title}
+          <Route path='/entry' history={history} render={(history) => 
+            <EntryPage history={history} />} 
+          />
+
+          <Route path='/register' render={(history) => 
+            <Registration history={history} />} 
+          />
+          
+          <Route path='/login' render={({history}) => <Login 
             handleError={this.handleError}
             clearError={this.clearError}
-            resetState={this.resetState}     
-            quotes={this.state.quotes}
-            updateEntry={this.updateEntry}
-            updateTitle={this.updateTitle}
-            updateUserEntries={this.updateUserEntries}
-            userEntries={this.state.userEntries}
-            toggleSave={this.toggleSave}
-            saveToggle={this.state.saveToggle}
+            stateError={this.state.error}
             history={history}
-          />} 
-        />
-
-        <Route path='/register' render={(history) => <Registration 
-          handleError={this.handleError}
-          clearError={this.clearError}
-          stateError={this.state.error} 
-          history={history}       
-        />} />
-        
-        <Route path='/login' render={({history}) => <Login 
-          handleError={this.handleError}
-          clearError={this.clearError}
-          stateError={this.state.error}
-          history={history}
-        />} />
+          />} />
+        </QuoterContext.Provider>
 
       </div>
     );
