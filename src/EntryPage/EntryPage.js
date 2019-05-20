@@ -22,7 +22,7 @@ export default class EntryPage extends React.Component {
     event.preventDefault()
     const { 
       toggleSave, updateUserEntries, handleError,
-      currentEntry, currentTitle,
+      currentEntry, currentTitle, clearError
     } = this.context
 
     const content = event.target.entryText.value
@@ -31,20 +31,25 @@ export default class EntryPage extends React.Component {
     const entry = { title, content }
 
     if (!currentEntry) {
-      handleError('Sorry, we can\'t save empty documents.')
-      console.log('No Entry')
+      handleError({ error: 'Sorry, we can\'t save empty documents.' })
+      setTimeout(() => {
+        clearError()
+      }, 5000)
       return
     }
 
     if (!currentTitle) {
-      handleError('Please add a title.')
-      console.log('No title')
+      handleError({ error:'Please add a title.' })
+      setTimeout(() => {
+        clearError()
+      }, 5000)
       return
     }
 
     // Send the entry to the server
     if(TokenService.getAuthToken()) {
       toggleSave()
+      clearError()
 
 
       ApiService.postEntry(entry)
@@ -74,7 +79,7 @@ export default class EntryPage extends React.Component {
     const { 
       updateEntry, currentEntry, currentTitle,
       userEntries, updateUserEntries, updateTitle,
-      quotes,
+      quotes, error,
     } = this.context
 
     return (
@@ -131,6 +136,8 @@ export default class EntryPage extends React.Component {
                   </div>
                 </div>
               </section>
+
+              <div className='error entry-error'>{error}</div>
 
               <section className='entry-area'>
                 <form className='entry_form' onSubmit={(event) => this.handleSaveEntry(event)}>

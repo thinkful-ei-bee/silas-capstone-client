@@ -15,7 +15,7 @@ textarea {
 }
 
 .quotes-area {
-  min-height: 220px;
+  min-height: 200px;
   max-height: 220px;
   width: 80%;
   margin: auto;
@@ -40,6 +40,12 @@ textarea {
   top: -27px;
   left: 19px;
   pointer-events: none;
+}
+
+.entry-error {
+  min-height: 22px;
+  position: relative;
+  bottom: 4px;
 }
 
 .entry_form {

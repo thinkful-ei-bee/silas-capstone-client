@@ -27,7 +27,7 @@
   font-size: 15px;
   padding-top: 4em;
   margin: auto;
-  margin-top: 13px;
+  margin-top: 50px;
 }
 
 .landing-page-info p {
@@ -66,14 +66,30 @@
 .register {
   font-size: 28px;
   background-color: rgb(209, 84, 53);
-  width: 92%;
+  width: 44%;
   border-radius: 21px;
+  display: inline-block;
+  margin-right: 1%;
 }
 
 .register a {
-  width: 94%;
+  width: 90%;
   border-radius: 7px;
   color: white;
+}
+
+.landing-login {
+  font-size: 28px;
+  background-color: rgb(46, 46, 46);
+  display: inline-block;
+  width: 44%;
+  border-radius: 21px;
+  margin-left: 1%;
+}
+
+.landing-login a {
+  color: white;
+  border-radius: 21px;
 }
 
 .sub-info {

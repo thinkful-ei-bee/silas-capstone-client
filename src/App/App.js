@@ -64,8 +64,13 @@ class App extends React.Component {
   findQuote() {
       setInterval(() => {
         if (this.state.entry.length > 0) {
+        
           const entry = this.state.entry.split(' ')
-          const subject = entry[Math.floor(Math.random() * entry.length)]
+          let subject = entry[Math.floor(Math.random() * entry.length)]
+
+          while (!this.checkQuoteIsValid(subject)) {
+            subject = entry[Math.floor(Math.random() * entry.length)]
+          }
 
           ApiServices.getQuoteBySubject(subject)
             .then(quote => {
@@ -91,10 +96,7 @@ class App extends React.Component {
   }
 
   checkQuoteIsValid(quote) {
-    if (banList.includes(quote)) {
-      return false;
-    }
-    return true;
+    return (!banList.includes(quote))
   }
 
   componentDidMount() {

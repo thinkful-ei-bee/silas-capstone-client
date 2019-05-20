@@ -9,7 +9,6 @@ export default class LandingPage extends React.Component {
       <div className='landing-page'>
 
         <nav role='navigation' className='landing-nav'>
-          <div className='landing-login'><Link to='/login'>Login</Link></div>  
         </nav>
 
         <div className='landing-page-info'>
@@ -36,6 +35,7 @@ export default class LandingPage extends React.Component {
 
         <div className='landing-button start-writing'><Link to='/entry'>Start Writing</Link></div>
         <div className='landing-button register'><Link to='/register'>Sign Up</Link></div>
+        <div className='landing-button landing-login'><Link to='/login'>Login</Link></div>  
 
       </div>
     )
