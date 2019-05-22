@@ -61,6 +61,22 @@ const ApiService = {
     })
   },
 
+  updateEntry(entry, entry_id) {
+    return fetch(`${config.API_ENDPOINT}/auth/entry/${entry_id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/JSON',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({entry})
+    })
+    .then(res => {
+      return (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    })
+  },
+
   deleteEntry(entry_id) {
     return fetch(`${config.API_ENDPOINT}/auth/entry/${entry_id}`, {
       method: 'DELETE',

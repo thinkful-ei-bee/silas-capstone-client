@@ -18,15 +18,27 @@ export default class EntryPage extends React.Component {
     this.props.history.push('/')
   }
 
+  handleQuotes() {
+    const { quotes } = this.context
+
+    if (quotes.length === 0 || !quotes) {
+      return 'Write about anything, and every few seconds, your entry will be scanned, and a new quote will appear!'
+    }
+
+    return quotes[quotes.length -1].quote
+  }
+
   handleSaveEntry = (event) => {
     event.preventDefault()
     const { 
       toggleSave, updateUserEntries, handleError,
-      currentEntry, currentTitle, clearError
+      currentEntry, currentTitle, clearError,
+      userEntries
     } = this.context
 
     const content = event.target.entryText.value
     const title = event.target.title.value
+    let entryExists = false;
 
     const entry = { title, content }
 
@@ -51,17 +63,46 @@ export default class EntryPage extends React.Component {
       toggleSave()
       clearError()
 
+      // Check if title exists in user entries
+      for (let i in userEntries) {
+        if (userEntries[i].title === title)
+        console.log(`There is an entry called ${userEntries[i].title}`)
+        entryExists = true;
+        entry.id = userEntries[i].id;
+        console.log('Entry ID: ', entry.id)
+      }
 
-      ApiService.postEntry(entry)
-        .then(() => {
-          ApiService.getUserEntries()
-          .then(entries => {
-            toggleSave()
-            updateUserEntries(entries)
+      // If updating
+      if (entryExists) {
+        ApiService.updateEntry(entry, entry.id)
+          .then(() => {
+            ApiService.getUserEntries()
+              .then(entries => {
+                toggleSave()
+                updateUserEntries(entries)
+              })
+              .catch(err => handleError(err))
           })
-          .catch(err => handleError(err))        
-        })
-        .catch(err => handleError(err))
+          .catch(err => {
+            console.log(err)
+            handleError(err)
+          })
+      }
+
+      // If posting an entry with a new name
+      if (!entryExists) {
+        ApiService.postEntry(entry)
+          .then(() => {
+            ApiService.getUserEntries()
+            .then(entries => {
+              toggleSave()
+              updateUserEntries(entries)
+            })
+            .catch(err => handleError(err))        
+          })
+          .catch(err => handleError(err))
+      }
+
     }
   }
 
@@ -115,10 +156,7 @@ export default class EntryPage extends React.Component {
               <section className='quotes-area'>
                 <div className='big-Q'>Q</div>
                 <div className='quotebox'>
-                  <p className='quote-paragraph'>{
-                    quotes && quotes.length > 0 &&
-                    quotes[quotes.length - 1].quote
-                  }</p>
+                  <p className='quote-paragraph'>{this.handleQuotes()}</p>
                   <div className='quote-author'>
                   
                   {
@@ -146,7 +184,8 @@ export default class EntryPage extends React.Component {
                     name='title' 
                     defaultValue={currentTitle}
                     onChange={(event) => updateTitle(event.target.value)}
-                    placeholder='Title'></input>
+                    placeholder='Title'
+                    maxLength={14}></input>
                   <textarea 
                     placeholder='Type anything...'
                     id='entryText' 

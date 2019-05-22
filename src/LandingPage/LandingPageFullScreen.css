@@ -1,7 +1,4 @@
 @media only screen and (min-width: 600px) {
-  .landing-login {
-    font-size: 17px;
-  } 
   .landing-page {
     min-width: 700px;
     margin: 0 20%;
@@ -82,11 +79,18 @@
     border-radius: 7px
   }
   .register {
-    width: 230px;
+    width: 140px;
     font-size: 22px;
   }
   .register a {
     width: 94%;
     border-radius: 7px
+  }
+  .landing-login {
+  font-size: 22px;
+  width: 140px;
+  } 
+  .landing-login a {
+    width: 94%;
   }
 }
