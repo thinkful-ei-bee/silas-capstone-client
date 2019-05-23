@@ -15,7 +15,7 @@ textarea {
 }
 
 .quotes-area {
-  min-height: 200px;
+  min-height: 162px;
   max-height: 220px;
   width: 80%;
   margin: auto;
@@ -40,6 +40,16 @@ textarea {
   top: -27px;
   left: 19px;
   pointer-events: none;
+}
+
+.save_confirm {
+  color: blue;
+  display: block;
+  text-align: center;
+  margin: auto;
+  min-height: 22px;
+  position: relative;
+  bottom: 4px;
 }
 
 .entry-error {
@@ -68,10 +78,6 @@ textarea {
   border-radius: 7px;
   margin: 15px auto;
   min-width: 120px;
-}
-
-.logout {
-  color: white;
 }
 
 .quotebox {
@@ -106,6 +112,7 @@ textarea {
     background-color: rgb(209, 84, 53);
     width: 100%;
     position: absolute;
+    overflow-y: scroll;
     top: 0;
     left: 0;
     bottom: 0;
@@ -115,13 +122,15 @@ textarea {
 }
 
 .sidebar h2 {
-    padding: 60px;
+    padding: 36px;
+    padding-top: 0px;
     padding-bottom: 40px;
     background-color: rgb(32, 32, 32);
     color: white;
     margin: 0;
     position: relative;
     top: 0px;
+    text-align: center;
 }
 
 .sidebar ul {
@@ -133,19 +142,29 @@ textarea {
 .sidebar li {
   background-color: white;
   width: 80%;
-  margin: auto;
+  margin: 9px auto;
   border-radius: 3px;
 }
 
 .sidebar li h3 {
   margin-top: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .logout {
-  position: relative;
-  top: 300px;
+  background-color: rgb(32, 32, 32);
   font-size: 20px;
+  color: white;
+  border-color: rgb(32, 32, 32);
+  padding: 19px;
+  position: relative;
+  top: 2px;
+}
+
+.sidebar_header {
+  text-align: right;
+  background-color: rgb(32, 32, 32);
 }
 
 .portfolio {

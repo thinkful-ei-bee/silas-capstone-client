@@ -19,6 +19,10 @@
   margin: 20px auto 12px auto;
 }
 
+.register-main p {
+  margin: 0 25%;
+}
+
 .register-form {
   background-color: rgb(231, 215, 187, 98);
   width: 80%;

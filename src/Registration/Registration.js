@@ -38,6 +38,7 @@ export default class Registration extends React.Component {
 
         <div className='register-main'>
           <h2>Register for an Account</h2>
+          <p>Sign up to save your journal entries. It's free!</p>
 
           <div className='register-error error'>
             {error && error}

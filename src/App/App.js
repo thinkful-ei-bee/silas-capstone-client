@@ -22,6 +22,7 @@ class App extends React.Component {
       quotes: [],
       error: null,
       saveToggle: true,
+      saveConfirm: '',
     }
   }
 
@@ -47,6 +48,14 @@ class App extends React.Component {
     this.setState({ error: null })
   }
 
+  handleSaveConfirm = (message) => {
+    this.setState({ saveConfirm: message })
+  }
+
+  clearSaveConfirm = () => {
+    this.setState({ saveConfirm: '' })
+  }
+
   resetState = () => {
     this.setState({
       entry: '',
@@ -67,9 +76,17 @@ class App extends React.Component {
         
           const entry = this.state.entry.split(' ')
           let subject = entry[Math.floor(Math.random() * entry.length)]
+          let banListCheckCount = 0
 
-          while (!this.checkQuoteIsValid(subject)) {
+          // Check 20 random words in the entry
+          // If none are valid, return
+          while (!this.checkSubjectIsValid(subject) && banListCheckCount < 21) {
             subject = entry[Math.floor(Math.random() * entry.length)]
+            banListCheckCount++
+          }
+
+          if (banListCheckCount >= 20) {
+            return
           }
 
           ApiServices.getQuoteBySubject(subject)
@@ -95,7 +112,7 @@ class App extends React.Component {
     }, 8000)
   }
 
-  checkQuoteIsValid(quote) {
+  checkSubjectIsValid(quote) {
     return (!banList.includes(quote))
   }
 
@@ -146,6 +163,9 @@ class App extends React.Component {
             userEntries: this.state.userEntries,
             toggleSave: this.toggleSave,
             saveToggle: this.state.saveToggle,
+            saveConfirm: this.state.saveConfirm,
+            handleSaveConfirm: this.handleSaveConfirm,
+            clearSaveConfirm: this.clearSaveConfirm,
           }}>
           <Route exact path='/' history={history} component={LandingPage} />
 

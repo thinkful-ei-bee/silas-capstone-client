@@ -9,9 +9,17 @@
 
 .delete-button {
   position: relative;
+  left: 23px;
 }
 
 .fa-trash {
   font-size: 20px;
   color: lightslategrey;
+}
+
+@media only screen and (min-width: 600px) {
+  .delete-button {
+    left: 10px;
+    border: none;
+  }
 }

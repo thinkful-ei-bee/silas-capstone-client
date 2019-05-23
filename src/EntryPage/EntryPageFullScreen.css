@@ -4,6 +4,7 @@
   }
   .qnav h1 {
     padding-top: 10px;
+    cursor: pointer;
   }
   .portfolio {
     background-color: white;
@@ -29,7 +30,7 @@
     display: inline-block;
   }
   .big-Q {
-    top: -111px;
+    top: -79px;
     left: 21px;
   }
   textarea {
@@ -41,12 +42,10 @@
     max-width: 330px;
   }
   .logout {
-    color: rgb(32, 32, 32);
     border-radius: 7px;
     font-size: 16px;
     min-width: 120px;
-    position: absolute;
-    top: 528px;
-    right: 110px;
+    position: relative;
+    left: 6px;
   }
 }

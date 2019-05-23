@@ -33,7 +33,8 @@ export default class EntryPage extends React.Component {
     const { 
       toggleSave, updateUserEntries, handleError,
       currentEntry, currentTitle, clearError,
-      userEntries
+      userEntries, handleSaveConfirm,
+      clearSaveConfirm,
     } = this.context
 
     const content = event.target.entryText.value
@@ -65,38 +66,46 @@ export default class EntryPage extends React.Component {
 
       // Check if title exists in user entries
       for (let i in userEntries) {
-        if (userEntries[i].title === title)
-        console.log(`There is an entry called ${userEntries[i].title}`)
-        entryExists = true;
-        entry.id = userEntries[i].id;
-        console.log('Entry ID: ', entry.id)
+        if (userEntries[i].title === title) {
+          entryExists = true;
+          entry.id = userEntries[i].id;
+        }
       }
 
       // If updating
-      if (entryExists) {
+      if (entryExists === true) {
         ApiService.updateEntry(entry, entry.id)
           .then(() => {
             ApiService.getUserEntries()
               .then(entries => {
                 toggleSave()
                 updateUserEntries(entries)
+
+                handleSaveConfirm('Saved')
+                setTimeout(() => {
+                  clearSaveConfirm()
+                }, 5000)
               })
               .catch(err => handleError(err))
           })
           .catch(err => {
-            console.log(err)
             handleError(err)
           })
       }
 
       // If posting an entry with a new name
-      if (!entryExists) {
+      if (entryExists === false) {
         ApiService.postEntry(entry)
           .then(() => {
             ApiService.getUserEntries()
             .then(entries => {
               toggleSave()
               updateUserEntries(entries)
+
+              handleSaveConfirm('Saved')
+              setTimeout(() => {
+                clearSaveConfirm()
+              }, 5000)              
             })
             .catch(err => handleError(err))        
           })
@@ -107,8 +116,11 @@ export default class EntryPage extends React.Component {
   }
 
   handleGetEntry = (entryId) => {
+    console.log('Clicked on entry')
+    console.log('Entry ID: ', entryId)
     ApiService.getEntryById(entryId)
       .then(entry => {
+        console.log('Entry Title: ', entry.title)
         this.context.updateEntry(entry.content)
         this.context.updateTitle(entry.title)
       })
@@ -120,7 +132,7 @@ export default class EntryPage extends React.Component {
     const { 
       updateEntry, currentEntry, currentTitle,
       userEntries, updateUserEntries, updateTitle,
-      quotes, error,
+      quotes, error, saveConfirm,
     } = this.context
 
     return (
@@ -130,7 +142,10 @@ export default class EntryPage extends React.Component {
             <input id="slide-sidebar" type="checkbox" defaultChecked='true' role="button" />
                 <label htmlFor="slide-sidebar"><span>&#9776;</span></label>
             <div className="sidebar">
-              <h2>My Journals</h2>
+              <header className='sidebar_header'>
+                {TokenService.getAuthToken() && <button className='logout' onClick={() => this.handleLogout()}>Logout</button>}
+                <h2>My Journals</h2>
+              </header>
               <UserEntryList 
                 userEntries={userEntries}
                 updateUserEntries={updateUserEntries}
@@ -144,7 +159,6 @@ export default class EntryPage extends React.Component {
                 <Link to='/register'>Sign Up</Link>
                 <Link to='/login'>Login</Link>
               </div>}
-              {TokenService.getAuthToken() && <button className='logout' onClick={() => this.handleLogout()}>Logout</button>}
             </div>
 
             <div className="portfolio">
@@ -176,6 +190,7 @@ export default class EntryPage extends React.Component {
               </section>
 
               <div className='error entry-error'>{error}</div>
+              <div className='save_confirm'>{saveConfirm}</div>
 
               <section className='entry-area'>
                 <form className='entry_form' onSubmit={(event) => this.handleSaveEntry(event)}>
@@ -185,7 +200,9 @@ export default class EntryPage extends React.Component {
                     defaultValue={currentTitle}
                     onChange={(event) => updateTitle(event.target.value)}
                     placeholder='Title'
-                    maxLength={14}></input>
+                    maxLength={14}
+                    value={currentTitle}>
+                    </input>
                   <textarea 
                     placeholder='Type anything...'
                     id='entryText' 
