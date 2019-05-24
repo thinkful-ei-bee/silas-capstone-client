@@ -116,11 +116,8 @@ export default class EntryPage extends React.Component {
   }
 
   handleGetEntry = (entryId) => {
-    console.log('Clicked on entry')
-    console.log('Entry ID: ', entryId)
     ApiService.getEntryById(entryId)
       .then(entry => {
-        console.log('Entry Title: ', entry.title)
         this.context.updateEntry(entry.content)
         this.context.updateTitle(entry.title)
       })
