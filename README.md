@@ -29,6 +29,10 @@ is free!
 Authorization
 -------------
 
+Use this test user to try Quoter out:
+Username: ExampleUser
+Password: Pa$$w0rd!!
+
 Users can sign up to save their entries for later.
 More user functions are in development.
 

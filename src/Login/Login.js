@@ -10,16 +10,16 @@ export default class Login extends React.Component {
 
   handleSubmitJwtAuth = (event) => {
     event.preventDefault()
-    const { loginUsername, loginPassword } = event.target
-    const  { clearError, handleError } = this.context
+    //const { loginUsername, loginPassword } = event.target
+    const  { username, password, clearError, 
+      handleError, clearCreds } = this.context
 
     ApiServices.postLogin(
-      loginUsername.value,
-      loginPassword.value
+      username,
+      password,
     )
     .then(res => {
-      loginUsername.value = ''
-      loginPassword.value = ''
+      clearCreds()
       this.props.history.push('/entry')
     })
     .then(res => {
@@ -30,8 +30,14 @@ export default class Login extends React.Component {
     })
   }
 
+  componentDidMount() {
+    const { clearError } = this.context
+    clearError()
+  }
+
   render() {
-    const { error } = this.context
+    const { error, updateUsername, updatePassword } = this.context
+
     return(
       <div className='login-page'>
         <nav role='navigation'>
@@ -47,10 +53,18 @@ export default class Login extends React.Component {
             
 
             <label htmlFor='loginUsername'>Username</label>
-            <input type='text' id='loginUsername' name='loginUsername'></input>
+            <input 
+              type='text' 
+              id='loginUsername' 
+              name='loginUsername'
+              onChange={(event) => updateUsername(event.target.value)} ></input>
 
             <label htmlFor='loginPassword'>Password</label>
-            <input type='password' id='loginPassword' name='loginPassword'></input>
+            <input 
+              type='password' 
+              id='loginPassword' 
+              name='loginPassword'
+              onChange={(event) => updatePassword(event.target.value)} ></input>
 
             <button type='submit'>Submit</button>
           </form>

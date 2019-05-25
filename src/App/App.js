@@ -23,7 +23,25 @@ class App extends React.Component {
       error: null,
       saveToggle: true,
       saveConfirm: '',
+      username: '',
+      password: '',
     }
+  }
+
+  updateUsername = (username) => {
+    console.log('USERNAME: ', username)
+    this.setState({ username })
+  }
+
+  updatePassword = (password) => {
+    this.setState({ password })
+  }
+
+  clearCreds = () => {
+    this.setState({
+      username: '',
+      password: '',
+    })
   }
 
   updateEntry = (entry) => {
@@ -152,20 +170,25 @@ class App extends React.Component {
           value={{
             currentEntry: this.state.entry,
             currentTitle: this.state.title,
+            clearError: this.clearError,
+            clearSaveConfirm: this.clearSaveConfirm,
+            clearCreds: this.clearCreds,
             error: this.state.error,
             handleError: this.handleError,
-            clearError: this.clearError,
-            resetState: this.resetState,
+            handleSaveConfirm: this.handleSaveConfirm,
+            password: this.state.password,
             quotes: this.state.quotes,
+            resetState: this.resetState,
+            saveToggle: this.state.saveToggle,
+            saveConfirm: this.state.saveConfirm,
+            toggleSave: this.toggleSave,
             updateEntry: this.updateEntry,
             updateTitle: this.updateTitle,
             updateUserEntries: this.updateUserEntries,
             userEntries: this.state.userEntries,
-            toggleSave: this.toggleSave,
-            saveToggle: this.state.saveToggle,
-            saveConfirm: this.state.saveConfirm,
-            handleSaveConfirm: this.handleSaveConfirm,
-            clearSaveConfirm: this.clearSaveConfirm,
+            updateUsername: this.updateUsername,
+            updatePassword: this.updatePassword,
+            username: this.state.username,
           }}>
           <Route exact path='/' history={history} component={LandingPage} />
 

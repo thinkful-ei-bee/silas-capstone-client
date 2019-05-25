@@ -37,8 +37,8 @@ export default class EntryPage extends React.Component {
       clearSaveConfirm,
     } = this.context
 
-    const content = event.target.entryText.value
-    const title = event.target.title.value
+    const content = currentEntry
+    const title = currentTitle
     let entryExists = false;
 
     const entry = { title, content }
@@ -194,7 +194,6 @@ export default class EntryPage extends React.Component {
                   <input 
                     id='title' 
                     name='title' 
-                    defaultValue={currentTitle}
                     onChange={(event) => updateTitle(event.target.value)}
                     placeholder='Title'
                     maxLength={14}

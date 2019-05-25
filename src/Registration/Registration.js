@@ -11,13 +11,13 @@ export default class Registration extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { username, password } = event.target
-    const { clearError, handleError } = this.context
+    //const { username, password } = event.target
+    const { clearError, handleError, username, 
+      password, clearCreds } = this.context
 
-    ApiServices.postUser(username.value, password.value)
+    ApiServices.postUser(username, password)
       .then(user => {
-        username.value=''
-        password.value=''
+        clearCreds()
         history.push('/entry')
       })
       .then(user => {
@@ -27,8 +27,13 @@ export default class Registration extends React.Component {
       .catch(err => handleError(err))
   }
 
+  componentDidMount() {
+    const { clearError } = this.context
+    clearError()
+  }
+
   render() {
-    const { error } = this.context
+    const { error, updateUsername, updatePassword, } = this.context
     return (
       <div className='registration'>
         
@@ -47,10 +52,18 @@ export default class Registration extends React.Component {
           <form className='register-form' onSubmit={(event) => this.handleSubmit(event)}>
 
             <label htmlFor='username'>Username</label>
-            <input type='text' id='username' name='username'></input>
+            <input 
+              type='text' 
+              id='username' 
+              name='username'
+              onChange={(event) => updateUsername(event.target.value)} ></input>
 
             <label htmlFor='password'>Password</label>
-            <input type='password' id='password' name='password'></input>
+            <input 
+              type='password' 
+              id='password' 
+              name='password'
+              onChange={(event) => updatePassword(event.target.value)} ></input>
 
             <button className='pure-button' type='submit'>Submit</button>
           </form>
