@@ -29,7 +29,6 @@ class App extends React.Component {
   }
 
   updateUsername = (username) => {
-    console.log('USERNAME: ', username)
     this.setState({ username })
   }
 
